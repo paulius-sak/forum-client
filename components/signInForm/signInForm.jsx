@@ -73,12 +73,7 @@ const SignInForm = () => {
         />
       </div>
       <button onClick={onSignIn}>Sign-In</button>
-      <p>
-        Already have an account?
-        <Link href="/login" className={styles.signInLink}>
-          Login
-        </Link>
-      </p>
+      
 
       {/* cia pakeisti i alert */}
       {isError && console.log("Please fill all the inputs")}

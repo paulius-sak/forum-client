@@ -28,13 +28,13 @@ const Header = () => {
 
         <div className={styles.login}>
           <div className={`${styles.account} ${styles.tooltipContainer}`}>
-            <a href="/login">
+            <Link href="/signInLogin">
               <img
                 className={styles.accLogo}
                 src={accountSvg.src}
                 alt="Login"
               />
-            </a>
+            </Link>
             <span className={styles.tooltipLogin}>Login</span>
           </div>
         </div>
