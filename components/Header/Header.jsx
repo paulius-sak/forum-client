@@ -16,13 +16,13 @@ const Header = () => {
 
         <ul className={styles.navbar}>
           <li>
-            <a href="#">About Us</a>
+            <Link href="#">About Us</Link>
           </li>
           <li>
-            <a href="#">Contact Us</a>
+            <Link href="#">Contact Us</Link>
           </li>
           <li>
-            <a href="#">Questions</a>
+            <Link href="/questions">Questions</Link>
           </li>
         </ul>
 

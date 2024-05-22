@@ -76,9 +76,9 @@ const SignInForm = () => {
       
 
       {/* cia pakeisti i alert */}
-      {isError && console.log("Please fill all the inputs")}
+      {isError && alert("Please fill all the inputs")}
 
-      {isBadData && console.log("Your provided data is bad")}
+      {isBadData && alert("Your provided data is bad")}
     </section>
   );
 };
