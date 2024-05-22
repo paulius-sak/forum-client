@@ -3,7 +3,7 @@ import styles from "./loginForm.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import cookies from "js-cookie";
-import Link from "next/link";
+
 
 const LoginForm = () => {
   const router = useRouter();
@@ -71,7 +71,6 @@ const LoginForm = () => {
       <button onClick={onLogin}>login</button>
       
 
-      {/* cia pakeisti i alert */}
       {isError && alert("Please fill all the inputs")}
 
       {isBadData && alert("Your provided data is bad")}

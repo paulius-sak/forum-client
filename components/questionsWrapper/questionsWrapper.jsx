@@ -10,7 +10,7 @@ const QuestionsWrapper = ({questions}) => {
             id={question.id}
             key={question.id}
             question_title={question.question_title}
-            question_text={question.question_text}
+            answer_count={question.answer_count}
             date={question.date}
             />
         ))}

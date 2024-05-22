@@ -10,6 +10,7 @@ const SignInForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState()
   const [isError, setError] = useState(false);
   const [isBadData, setBadData] = useState(false);
 
@@ -18,6 +19,7 @@ const SignInForm = () => {
       name: name,
       email: email,
       password: password,
+      avatarUrl: avatarUrl,
     };
 
     if (!name || !email || !password) {
@@ -34,7 +36,7 @@ const SignInForm = () => {
 
       if (response.status === 200) {
         setBadData(false);
-        router.push("/login");
+        router.back()
       }
 
       console.log("response", response);
@@ -58,6 +60,7 @@ const SignInForm = () => {
       <div className={styles.inputGroup}>
         <label htmlFor="">email</label>
         <input
+        
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -70,6 +73,15 @@ const SignInForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+        />
+      </div>
+      <div className={styles.inputGroup}>
+        <label htmlFor="">avatar url(optional)</label>
+        <input
+          
+          value={avatarUrl}
+          onChange={(e) => setAvatarUrl(e.target.value)}
+          
         />
       </div>
       <button onClick={onSignIn}>Sign-In</button>

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import cookies from "js-cookie";
 import QuestionsWrapper from "../../components/questionsWrapper/questionsWrapper";
-
+import Link from "next/link";
 
 const Index = () => {
   const [questions, setQuestions] = useState(null);
@@ -14,25 +14,23 @@ const Index = () => {
 
   const fetchQuestions = async () => {
     try {
-        const headers = {
-            authorization: cookies.get("jwt_token")
-        }
-        const response = await axios.get(`${process.env.SERVER_URL}/questions`, {headers,})
-        setQuestions(response.data.questions)
-        console.log(response.data.questions)
+      const response = await axios.get(`${process.env.SERVER_URL}/questions`);
+      setQuestions(response.data.questions);
+      console.log(response.data.questions);
     } catch (err) {
-        if (response.status === 401) {
-            router.push("/signInLogin")
-        }
-        console.log("err", err)
+      console.log("err", err);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchQuestions()
-  }, [])
+    fetchQuestions();
+  }, []);
   return (
     <PageTemplate>
+      <section>
+        <h1>All questions</h1>
+        <Link href="/askQuestion" >Ask Question</Link>
+      </section>
       {questions && <QuestionsWrapper questions={questions} />}
     </PageTemplate>
   );
