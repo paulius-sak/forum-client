@@ -47,7 +47,7 @@ const AskQuestionWrapper = () => {
 
   return (
     <section className={styles.loginWrapper}>
-      <h1>LOGIN</h1>
+      <h1>Ask Question</h1>
       <div className={styles.inputGroup}>
         <label htmlFor="">Question title</label>
         <input
