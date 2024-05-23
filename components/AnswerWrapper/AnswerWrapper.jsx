@@ -2,7 +2,7 @@ import React from "react";
 import AnswerCard from "../AnswerCard/AnswerCard";
 import PostAnswer from "../PostAnswer/PostAnswer";
 
-const AnswerWrapper = ({ answers, noAnswers, DeleteAnswer, user }) => {
+const AnswerWrapper = ({ answers, noAnswers, DeleteAnswer, user, users }) => {
   return (
     <section>
       {noAnswers ? (
@@ -19,6 +19,7 @@ const AnswerWrapper = ({ answers, noAnswers, DeleteAnswer, user }) => {
             user_id={answer.user_id}
             user={user}
             DeleteAnswer={() => DeleteAnswer(answer.id)}
+            users={users}
           />
         ))
       )}

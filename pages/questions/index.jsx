@@ -13,6 +13,7 @@ const Index = () => {
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [filter, setFilter] = useState("all");
   const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([])
 
   const router = useRouter();
 
@@ -41,6 +42,23 @@ const Index = () => {
       console.log("err", err);
     }
   };
+
+  const fetchUsers = async () => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
+      const response = await axios.get(`${process.env.SERVER_URL}/users`, {
+        headers,
+      });
+      setUsers(response.data.users);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+
 
   const filterQuestions = (filter) => {
     setFilter(filter);
@@ -75,11 +93,14 @@ const Index = () => {
   useEffect(() => {
     fetchQuestions();
     fetchUser();
+    fetchUsers()
   }, []);
 
   useEffect(() => {
     filterQuestions(filter);
   }, [questions, filter]);
+
+  
 
   return (
     <PageTemplate>
@@ -93,6 +114,7 @@ const Index = () => {
           DeleteQuestion={DeleteQuestion}
           questions={filteredQuestions}
           user={user}
+          users={users}
         />
       )}
     </PageTemplate>

@@ -16,10 +16,10 @@ const Header = () => {
 
         <ul className={styles.navbar}>
           <li>
-            <Link href="#">About Us</Link>
+            <Link href="/">About Us</Link>
           </li>
           <li>
-            <Link href="#">Contact Us</Link>
+            <Link href="/">Contact Us</Link>
           </li>
           <li>
             <Link href="/questions">Questions</Link>

@@ -11,6 +11,7 @@ const Question = () => {
   const [answers, setAnswers] = useState([]);
   const [noAnswers, setNoAnswers] = useState(false);
   const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([])
 
   const router = useRouter();
   const { id } = router.query;
@@ -86,24 +87,47 @@ const Question = () => {
     }
   };
 
- 
+  const fetchUsers = async () => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
+      const response = await axios.get(`${process.env.SERVER_URL}/users`, {
+        headers,
+      });
+      setUsers(response.data.users);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  console.log(users)
 
   useEffect(() => {
     fetchUser();
+    fetchUsers()
   }, []);
 
+  const questionUser = users.find((user) => user.id === question?.user_id)
+
+  console.log(questionUser)
 
   return (
     <PageTemplate>
       {question && (
         <main>
+          <div>
+            <h3>username:{questionUser?.name}</h3>
+            <img className={styles.avatar} src={questionUser?.avatarUrl} alt="" />
+          </div>
           <div className={styles.wrapper}>
             <h1>{question.question_title}</h1>
             <p>{question.question_text}</p>
           </div>
         </main>
       )}
-      {answers && <AnswerWrapper answers={answers} noAnswers={noAnswers} user={user} DeleteAnswer={DeleteAnswer}/>}
+      {answers && <AnswerWrapper answers={answers} noAnswers={noAnswers} user={user} DeleteAnswer={DeleteAnswer} users={users}/>}
     </PageTemplate>
   );
 };

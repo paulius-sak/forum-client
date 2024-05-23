@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./questionsWrapper.module.css";
 import QuestionCard from "../questionCard/questionCard";
 
-const QuestionsWrapper = ({ questions, DeleteQuestion, user}) => {
+const QuestionsWrapper = ({ questions, DeleteQuestion, user, users}) => {
   return (
     <div className={styles.questionsWrapper}>
       {questions.map((question) => (
@@ -15,6 +15,7 @@ const QuestionsWrapper = ({ questions, DeleteQuestion, user}) => {
           date={question.date}
           user={user}
           user_id={question.user_id}
+          users={users}
         />
       ))}
     </div>

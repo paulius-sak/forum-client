@@ -41,6 +41,10 @@ const AskQuestionWrapper = () => {
         router.back();
       }
     } catch (err) {
+      if (err.response.status === 401) {
+        alert("log in to ask a question");
+      }
+
       console.log("err", err);
     }
   };

@@ -36,7 +36,7 @@ const LoginForm = () => {
       if (response.status === 200) {
         setBadData(false);
         cookies.set("jwt_token", response.data.jwt);
-        router.push("/");
+        router.back();
       }
       
 

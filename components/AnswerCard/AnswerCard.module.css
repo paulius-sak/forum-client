@@ -5,3 +5,6 @@
 .clicked {
     background-color: grey;
 }
+.avatar {
+    width: 40px;
+}
