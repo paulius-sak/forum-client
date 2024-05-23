@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./AnswerCard.module.css";
+import cookies from "js-cookie";
+import axios from "axios";
 
 const AnswerCard = ({
   id,
@@ -10,16 +12,54 @@ const AnswerCard = ({
   DeleteAnswer,
   user,
   user_id,
-
 }) => {
-  const isCreator = user && user.id === user_id
-  return <div className={styles.wrapper}>
-    <p>{answer_text}</p>
-    <h5>liked:{gained_likes.length}</h5>
-    <h5>disliked:{gained_dislikes.length}</h5>
-    <h6>created: {date.split("T")[0]}</h6>
-    {isCreator && <button onClick={DeleteAnswer}>delete</button>}
-  </div>;
+  const isCreator = user && user.id === user_id;
+
+  const handleLike = async () => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+      await axios.post(
+        `${process.env.SERVER_URL}/answers/${id}/like`,
+        {},
+        { headers }
+      );
+      window.location.reload();
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  const handleDislike = async () => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+      await axios.post(
+        `${process.env.SERVER_URL}/answers/${id}/dislike`,
+        {},
+        { headers }
+      );
+      window.location.reload();
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <p>{answer_text}</p>
+      <h5>liked: {gained_likes.length}</h5>
+      <h5>disliked: {gained_dislikes.length}</h5>
+      <h6>created: {date.split("T")[0]}</h6>
+      {isCreator && <button onClick={DeleteAnswer}>delete</button>}
+      <div>
+        <button onClick={handleLike}>like</button>
+        <button onClick={handleDislike}>dislike</button>
+      </div>
+    </div>
+  );
 };
 
 export default AnswerCard;
