@@ -58,21 +58,27 @@ const AnswerCard = ({
   };
 
   return (
-    <div className={styles.wrapper}>
-      <p>{answer_text}</p>
-      <h5>liked: {gained_likes.length}</h5>
-      <h5>disliked: {gained_dislikes.length}</h5>
-      <h6>created: {date.split("T")[0]}</h6>
-      {isCreator && <button onClick={DeleteAnswer}>delete</button>}
-      <div>
-        <button onClick={handleLike}>like</button>
-        <button onClick={handleDislike}>dislike</button>
-      </div>
-      <div>
-        <h5>user:{answerUser?.name}</h5>
-        <img className={styles.avatar} src={answerUser?.avatarUrl} alt="" />
-      </div>
-    </div>
+    <main className={styles.wrapper}>
+      <section className={styles.userInfoWrapper}>
+        <section className={styles.userWrapper}>
+          <h5>{answerUser?.name}</h5>
+          <img className={styles.avatar} src={answerUser?.avatarUrl} alt="" />
+        </section>
+        <section className={styles.infoWrapper}>
+          <h5>liked: {gained_likes.length}</h5>
+          <h5>disliked: {gained_dislikes.length}</h5>
+          <h6>{date.split("T")[0]}</h6>
+
+          <button onClick={handleLike}>like</button>
+          <button onClick={handleDislike}>dislike</button>
+
+          {isCreator && <button onClick={DeleteAnswer}>delete</button>}
+        </section>
+      </section>
+      <section className={styles.answerWrapper}>
+        <p>{answer_text}</p>
+      </section>
+    </main>
   );
 };
 

@@ -105,8 +105,7 @@ const Index = () => {
   return (
     <PageTemplate>
       <QuestionsFilter filter={filter} onFilterChange={filterQuestions} />
-      <section>
-        <h1>All questions</h1>
+      <section className={styles.askLink}>
         <Link href="/askQuestion">Ask Question</Link>
       </section>
       {filteredQuestions && (

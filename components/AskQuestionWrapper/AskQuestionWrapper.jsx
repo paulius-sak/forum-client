@@ -50,26 +50,36 @@ const AskQuestionWrapper = () => {
   };
 
   return (
-    <section className={styles.loginWrapper}>
-      <h1>Ask Question</h1>
-      <div className={styles.inputGroup}>
-        <label htmlFor="">Question title</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-      <div className={styles.inputGroup}>
-        <label htmlFor="">Describe your Question with more details</label>
-        <input
-          type="textarea"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          required
-        />
-      </div>
+    <section className={styles.wrapper}>
+      <section className={styles.pageTitle}>
+        <h1>Ask Question</h1>
+      </section>
+
+      <section className={styles.askQuestionWrapper}>
+        <div className={styles.inputGroup}>
+          <label htmlFor="">Question title</label>
+          <textarea
+            rows="2"
+            cols="33"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div className={styles.inputGroup}>
+          <label htmlFor="">Describe your Question with more details</label>
+          <textarea
+            rows="10"
+            cols="33"
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            required
+          />
+        </div>
+      </section>
+
       <button onClick={askQuestion}>Ask Question</button>
 
       {isError && alert("Please fill all the inputs")}

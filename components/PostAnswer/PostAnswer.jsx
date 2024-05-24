@@ -51,7 +51,9 @@ const PostAnswer = () => {
       <h1>Post Answer</h1>
 
       <div className={styles.inputGroup}>
-        <input
+        <textarea
+          rows="12"
+          cols="100"
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}

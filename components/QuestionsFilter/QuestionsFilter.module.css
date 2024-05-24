@@ -1,3 +1,20 @@
+.filterWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 4rem 1rem;
+  border-bottom: 1px solid grey;
+  padding-bottom: 2rem;
+}
+
+.filterWrapper button {
+  border: none;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+}
 .active {
-    background-color: grey;
+  background-color: rgb(163, 161, 161);
+  color: #fff;
 }

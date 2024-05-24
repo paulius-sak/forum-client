@@ -1,10 +1,32 @@
 .wrapper {
-    border: 1px solid black;
+    border-bottom: 1px solid grey;
+    display: flex;
+    gap: 2rem;
 }
 
-.clicked {
-    background-color: grey;
+.userInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    border-right: 1px solid grey;
+    width: 120px;
+    margin: 5px 0;
 }
+.infoWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.answerWrapper {
+    padding: 10px;
+}
+.answerWrapper p{
+    font-weight: 500;
+}
+
+
 .avatar {
     width: 40px;
 }

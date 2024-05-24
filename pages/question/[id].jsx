@@ -11,7 +11,7 @@ const Question = () => {
   const [answers, setAnswers] = useState([]);
   const [noAnswers, setNoAnswers] = useState(false);
   const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   const router = useRouter();
   const { id } = router.query;
@@ -66,7 +66,7 @@ const Question = () => {
         }
       );
 
-      router.reload()
+      router.reload();
     } catch (err) {
       console.log("err", err);
     }
@@ -102,32 +102,44 @@ const Question = () => {
     }
   };
 
-  console.log(users)
+  console.log(users);
 
   useEffect(() => {
     fetchUser();
-    fetchUsers()
+    fetchUsers();
   }, []);
 
-  const questionUser = users.find((user) => user.id === question?.user_id)
+  const questionUser = users.find((user) => user.id === question?.user_id);
 
-  console.log(questionUser)
+  console.log(questionUser);
 
   return (
     <PageTemplate>
       {question && (
-        <main>
-          <div>
-            <h3>username:{questionUser?.name}</h3>
-            <img className={styles.avatar} src={questionUser?.avatarUrl} alt="" />
+        <main className={styles.wrapper}>
+          <div className={styles.userInfo}>
+            <h3>{questionUser?.name}</h3>
+            <img
+              className={styles.avatar}
+              src={questionUser?.avatarUrl}
+              alt=""
+            />
           </div>
-          <div className={styles.wrapper}>
+          <div className={styles.questionWrapper}>
             <h1>{question.question_title}</h1>
             <p>{question.question_text}</p>
           </div>
         </main>
       )}
-      {answers && <AnswerWrapper answers={answers} noAnswers={noAnswers} user={user} DeleteAnswer={DeleteAnswer} users={users}/>}
+      {answers && (
+        <AnswerWrapper
+          answers={answers}
+          noAnswers={noAnswers}
+          user={user}
+          DeleteAnswer={DeleteAnswer}
+          users={users}
+        />
+      )}
     </PageTemplate>
   );
 };

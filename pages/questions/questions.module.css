@@ -1,0 +1,13 @@
+.askLink a{
+    text-decoration: none;
+    background-color: rgb(31, 163, 224);
+    padding:6px 5px;
+    border-radius: 4px;
+    color: #fff;
+
+}
+
+.askLink {
+    padding: 1rem;
+    text-align: end;
+}
