@@ -3,3 +3,16 @@
     text-align: center;
     margin-top: 2rem;
 }
+
+.toggleBtn {
+    all: unset;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgb(83, 79, 79);
+    
+}
+
+.toggleBtn:hover {
+   color: rgb(34, 33, 33);
+    transition: 0.3s ease-out;
+}

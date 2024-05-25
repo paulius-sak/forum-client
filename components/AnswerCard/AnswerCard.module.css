@@ -17,16 +17,22 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
+    width: 110px;
 }
 
 .answerWrapper {
     padding: 10px;
+    text-wrap: wrap;
 }
 .answerWrapper p{
     font-weight: 500;
 }
 
-
 .avatar {
     width: 40px;
+}
+
+.infoWrapper
+.deleteBtn {
+    background-color: var(--button-red);
 }

@@ -1,7 +1,12 @@
 .answerWrapper {
-    margin-top: 3rem;
+  margin-top: 3rem;
 }
-.answerWrapper button {
-    margin-top: 1rem;
-    padding: 5px 1px;
+
+.error {
+  color: var(--error);
+  padding: 5px;
+}
+
+.postAnswerBtn {
+  padding: 4px 5px;
 }

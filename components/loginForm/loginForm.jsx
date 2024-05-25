@@ -3,6 +3,7 @@ import styles from "./loginForm.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import cookies from "js-cookie";
+import Button from "../Button/Button";
 
 
 const LoginForm = () => {
@@ -68,12 +69,11 @@ const LoginForm = () => {
           required
         />
       </div>
-      <button onClick={onLogin}>login</button>
+      <Button className={styles.loginBtn} onClick={() => onLogin()} title="Login"/>
       
+      {isError && <small className={styles.error}>* please fill all inputs</small>}
 
-      {isError && alert("Please fill all the inputs")}
-
-      {isBadData && alert("Your provided data is bad")}
+      {isBadData && <small className={styles.error}>* your provided data is bad</small>}
     </section>
   );
 };

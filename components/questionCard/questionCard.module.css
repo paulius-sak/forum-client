@@ -27,3 +27,7 @@
 .title a:hover {
     color: rgb(9, 142, 182);
 }
+
+.deleteBtn {
+    background-color: var(--button-red);
+}

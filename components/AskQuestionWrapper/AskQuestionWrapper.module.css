@@ -30,3 +30,9 @@
     padding: 5px 0;
     cursor: pointer;
 }
+
+.error {
+    color: var(--error);
+    padding: 5px;
+}
+

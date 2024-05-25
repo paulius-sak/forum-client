@@ -1,7 +1,9 @@
 :root {
   --primary-color: #7f8181;
    --text-color: #f0efee;
-   --error: #a52a2a;
+   --error: #eb1616;
+   --button-blue: #0077ff;
+   --button-red:#eb1616;
 }
 * {
   box-sizing: border-box;

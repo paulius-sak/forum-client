@@ -3,6 +3,7 @@ import styles from "./PostAnswer.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 import cookies from "js-cookie";
+import Button from "../Button/Button";
 
 const PostAnswer = () => {
   const router = useRouter();
@@ -43,6 +44,7 @@ const PostAnswer = () => {
       console.log("err", err);
       if (err.response.status === 401) {
         alert("you need to be logged in to post an answer");
+        router.push("/signInLogin")
       }
     }
   };
@@ -60,9 +62,9 @@ const PostAnswer = () => {
           required
         />
       </div>
-      <button onClick={postAnswer}>Post Answer</button>
+      <Button className={styles.postAnswerBtn} title="Post Answer" onClick={() => postAnswer()}/>
 
-      {isError && alert("Please fill all the inputs")}
+      {isError && <small className={styles.error}>* can`t post empty answer</small>}
     </section>
   );
 };

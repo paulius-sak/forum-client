@@ -3,6 +3,7 @@ import styles from "./signInForm.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
+import Button from "../Button/Button";
 
 const SignInForm = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ const SignInForm = () => {
   };
 
   return (
-    <section className={styles.loginWrapper}>
+    <section className={styles.signInWrapper}>
       <h1>Sign-In</h1>
       <div className={styles.inputGroup}>
         <label htmlFor="">name</label>
@@ -84,13 +85,12 @@ const SignInForm = () => {
           
         />
       </div>
-      <button onClick={onSignIn}>Sign-In</button>
+      <Button className={styles.signInBtn} title="Sign-In" onClick={onSignIn}/>
       
 
-      {/* cia pakeisti i alert */}
-      {isError && alert("Please fill all the inputs")}
+      {isError && <small className={styles.error}>* please fill all inputs</small>}
 
-      {isBadData && alert("Your provided data is bad")}
+      {isBadData && <small className={styles.error}>* your provided data is bad</small>}
     </section>
   );
 };

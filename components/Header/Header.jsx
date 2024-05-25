@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Header/Header.module.css";
 import logo from "../../assets/logo/Riddle.png";
-import accountSvg from "../../assets/icons/account.svg";
+import loginSvg from "../../assets/icons/logIn.svg";
 import logoutSvg from "../../assets/icons/logout.svg";
 import Link from "next/link";
 import cookies from "js-cookie";
@@ -52,10 +52,10 @@ const Header = () => {
 
         <ul className={styles.navbar}>
           <li>
-            <Link href="/">About Us</Link>
+            <Link href="/about">About Us</Link>
           </li>
           <li>
-            <Link href="/">Contact Us</Link>
+            <Link href="/contacts">Contact Us</Link>
           </li>
           <li>
             <Link href="/questions">Questions</Link>
@@ -67,8 +67,8 @@ const Header = () => {
             <div className={`${styles.account} ${styles.tooltipContainer}`}>
               <Link href="/signInLogin">
                 <img
-                  className={styles.accLogo}
-                  src={accountSvg.src}
+                  className={styles.loginLogo}
+                  src={loginSvg.src}
                   alt="Login"
                 />
               </Link>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./AnswerCard.module.css";
 import cookies from "js-cookie";
 import axios from "axios";
+import Button from "../Button/Button";
 
 const AnswerCard = ({
   id,
@@ -65,14 +66,20 @@ const AnswerCard = ({
           <img className={styles.avatar} src={answerUser?.avatarUrl} alt="" />
         </section>
         <section className={styles.infoWrapper}>
-          <h5>liked: {gained_likes.length}</h5>
-          <h5>disliked: {gained_dislikes.length}</h5>
+          <h5>Liked: {gained_likes.length}</h5>
+          <h5>Disliked: {gained_dislikes.length}</h5>
           <h6>{date.split("T")[0]}</h6>
 
-          <button onClick={handleLike}>like</button>
-          <button onClick={handleDislike}>dislike</button>
+          <Button onClick={() => handleLike()} title="Like" />
+          <Button onClick={() => handleDislike()} title="Dislike" />
 
-          {isCreator && <button onClick={DeleteAnswer}>delete</button>}
+          {isCreator && (
+            <Button
+              onClick={() => DeleteAnswer()}
+              title="Delete"
+              className={styles.deleteBtn}
+            />
+          )}
         </section>
       </section>
       <section className={styles.answerWrapper}>

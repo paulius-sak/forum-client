@@ -30,3 +30,7 @@
 .error {
   color: var(--error);
 }
+
+.loginBtn {
+  padding: 4px 5px;
+}

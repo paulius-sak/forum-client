@@ -14,7 +14,7 @@ const Index = () => {
     <PageTemplate>
       {showSignInForm ? <SignInForm /> : <LoginForm />}
       <div className={styles.btnWrapper}>
-        <button onClick={toggleForms}>
+        <button className={styles.toggleBtn} onClick={toggleForms}>
           {showSignInForm ? "Already have an account? Login here" : "Don`t have an account? Sign-in here"}
         </button>
       </div>

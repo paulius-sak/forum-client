@@ -3,6 +3,7 @@ import styles from "./AskQuestionWrapper.module.css";
 import axios from "axios";
 import { useRouter } from "next/router";
 import cookies from "js-cookie";
+import Button from "../Button/Button";
 
 const AskQuestionWrapper = () => {
   const router = useRouter();
@@ -43,6 +44,7 @@ const AskQuestionWrapper = () => {
     } catch (err) {
       if (err.response.status === 401) {
         alert("log in to ask a question");
+        router.push("/signInLogin");
       }
 
       console.log("err", err);
@@ -80,9 +82,15 @@ const AskQuestionWrapper = () => {
         </div>
       </section>
 
-      <button onClick={askQuestion}>Ask Question</button>
+      <Button
+        className={styles.postBtn}
+        onClick={() => askQuestion()}
+        title="Post Question"
+      />
 
-      {isError && alert("Please fill all the inputs")}
+      {isError && (
+        <small className={styles.error}>* please fill all inputs</small>
+      )}
     </section>
   );
 };

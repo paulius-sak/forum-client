@@ -36,7 +36,10 @@
 .login{
   display: flex;
   gap: 1rem;
+  width: 103px;
+  justify-content: center;
 }
+
 .login button {
   all: unset;
   cursor: pointer;
@@ -55,7 +58,7 @@
 
 .hiUser {
   font-weight: 600;
-  
+  text-align: center;
 }
 
 .tooltipContainer {
@@ -65,7 +68,7 @@
 
 .tooltipLogin {
   position: absolute;
-  left: -30%;
+  left: -10%;
   transform: translateY(-110%);
   padding: 2px 6px;
   background-color: #484747;
@@ -77,8 +80,8 @@
 }
 .tooltipLogout {
   position: absolute;
-  left: -30%;
-  transform: translateY(-110%);
+  left: -100%;
+  transform: translateY(-140%);
   padding: 2px 6px;
   background-color: #484747;
   color: white;

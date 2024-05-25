@@ -1,6 +1,6 @@
 .askLink a{
     text-decoration: none;
-    background-color: rgb(31, 163, 224);
+    background-color: var(--button-blue);
     padding:6px 5px;
     border-radius: 4px;
     color: #fff;
