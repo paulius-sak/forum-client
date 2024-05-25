@@ -3,6 +3,7 @@ import styles from "./AnswerCard.module.css";
 import cookies from "js-cookie";
 import axios from "axios";
 import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
 
 const AnswerCard = ({
   id,
@@ -15,6 +16,7 @@ const AnswerCard = ({
   user_id,
   users,
 }) => {
+  const [isShowWarning, setShowWarning] = useState(false);
   const answerUser = users.find((user) => user.id === user_id);
 
   console.log(answerUser);
@@ -75,7 +77,7 @@ const AnswerCard = ({
 
           {isCreator && (
             <Button
-              onClick={() => DeleteAnswer()}
+              onClick={() => setShowWarning(true)}
               title="Delete"
               className={styles.deleteBtn}
             />
@@ -85,6 +87,14 @@ const AnswerCard = ({
       <section className={styles.answerWrapper}>
         <p>{answer_text}</p>
       </section>
+
+      {isShowWarning && (
+        <Modal
+          message="Do you really want to delete your answer?"
+          onConfirm={DeleteAnswer}
+          onCancel={() => setShowWarning(false)}
+        />
+      )}
     </main>
   );
 };

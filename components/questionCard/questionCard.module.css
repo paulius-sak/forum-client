@@ -28,6 +28,6 @@
     color: rgb(9, 142, 182);
 }
 
-.deleteBtn {
+.userInfo .deleteBtn {
     background-color: var(--button-red);
 }

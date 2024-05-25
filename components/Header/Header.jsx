@@ -7,6 +7,9 @@ import Link from "next/link";
 import cookies from "js-cookie";
 import { useRouter } from "next/router";
 import axios from "axios";
+import aboutSvg from "../../assets/icons/about.svg"
+import contactsSvg from "../../assets/icons/contacts.svg"
+import questionsSvg from "../../assets/icons/questions.svg"
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -52,13 +55,13 @@ const Header = () => {
 
         <ul className={styles.navbar}>
           <li>
-            <Link href="/about">About Us</Link>
+            <Link href="/about"> <img src={aboutSvg.src} alt="about us" /> About Us</Link>
           </li>
           <li>
-            <Link href="/contacts">Contact Us</Link>
+            <Link href="/contacts"> <img src={contactsSvg.src} alt="contacts" /> Contact Us</Link>
           </li>
           <li>
-            <Link href="/questions">Questions</Link>
+            <Link href="/questions"> <img src={questionsSvg.src} alt="questions" /> Questions</Link>
           </li>
         </ul>
 

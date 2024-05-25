@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./questionCard.module.css";
 import Link from "next/link";
 import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
 
 const QuestionCard = ({
   id,
@@ -13,6 +14,7 @@ const QuestionCard = ({
   user_id,
   users,
 }) => {
+  const [isShowWarning, setShowWarning] = useState(false);
   const isCreator = user && user.id === user_id;
 
   const questionUser = users.find((user) => user.id === user_id);
@@ -22,7 +24,15 @@ const QuestionCard = ({
       <section className={styles.userInfo}>
         <h5>{date.split("T")[0]}</h5>
         <h5>Answers: {answer_count} </h5>
-        {isCreator && <Button title="Delete" className={styles.deleteBtn} onClick={DeleteQuestion}/>}
+
+        {isCreator && (
+          <Button
+            title="Delete"
+            className={styles.deleteBtn}
+            onClick={() => setShowWarning(true)}
+          />
+        )}
+
         <h5>Asked: {questionUser ? questionUser.name : "undefined"}</h5>
       </section>
       <section className={styles.title}>
@@ -30,6 +40,13 @@ const QuestionCard = ({
           <h2>{question_title}</h2>
         </Link>
       </section>
+      {isShowWarning && (
+        <Modal
+          message="Do you really want to delete your question?"
+          onConfirm={DeleteQuestion}
+          onCancel={() => setShowWarning(false)}
+        />
+      )}
     </div>
   );
 };
