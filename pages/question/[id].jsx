@@ -101,9 +101,6 @@ const Question = () => {
       console.log("err", err);
     }
   };
-
-  console.log(users);
-
   useEffect(() => {
     fetchUser();
     fetchUsers();
@@ -111,7 +108,6 @@ const Question = () => {
 
   const questionUser = users.find((user) => user.id === question?.user_id);
 
-  console.log(questionUser);
 
   return (
     <PageTemplate>

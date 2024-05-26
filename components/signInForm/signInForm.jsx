@@ -68,13 +68,14 @@ const SignInForm = () => {
         />
       </div>
       <div className={styles.inputGroup}>
-        <label htmlFor="">password</label>
+        <label htmlFor="">*password</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <span className={styles.pswValid}>*at least 6 characters and 1 number</span>
       </div>
       <div className={styles.inputGroup}>
         <label htmlFor="">avatar url(optional)</label>
@@ -86,6 +87,8 @@ const SignInForm = () => {
         />
       </div>
       <Button className={styles.signInBtn} title="Sign-In" onClick={onSignIn}/>
+
+      
       
 
       {isError && <small className={styles.error}>* please fill all inputs</small>}

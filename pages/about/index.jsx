@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./about.module.css";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
+import Link from "next/link";
 
 const index = () => {
   return (
@@ -72,7 +73,7 @@ const index = () => {
         <h2>Contact Us</h2>
         <p>
           If you have any questions or need assistance, feel free to reach out
-          to us through our <a href="/contacts">Contact Page</a>.
+          to us through our <Link href="/contacts">Contact Page</Link>.
         </p>
       </main>
     </PageTemplate>

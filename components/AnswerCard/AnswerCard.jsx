@@ -19,7 +19,6 @@ const AnswerCard = ({
   const [isShowWarning, setShowWarning] = useState(false);
   const answerUser = users.find((user) => user.id === user_id);
 
-  console.log(answerUser);
   const isCreator = user && user.id === user_id;
 
   const handleLike = async () => {

@@ -22,7 +22,6 @@ const Index = () => {
       const response = await axios.get(`${process.env.SERVER_URL}/questions`);
       setQuestions(response.data.questions);
       setFilteredQuestions(response.data.questions);
-      console.log(response.data.questions);
     } catch (err) {
       console.log("err", err);
     }

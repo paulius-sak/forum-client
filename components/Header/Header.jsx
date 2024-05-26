@@ -7,13 +7,20 @@ import Link from "next/link";
 import cookies from "js-cookie";
 import { useRouter } from "next/router";
 import axios from "axios";
-import aboutSvg from "../../assets/icons/about.svg"
-import contactsSvg from "../../assets/icons/contacts.svg"
-import questionsSvg from "../../assets/icons/questions.svg"
+import aboutSvg from "../../assets/icons/about.svg";
+import contactsSvg from "../../assets/icons/contacts.svg";
+import questionsSvg from "../../assets/icons/questions.svg";
+import burgerSvg from "../../assets/icons/burger.svg";
+import closeSvg from "../../assets/icons/close.svg";
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState(null);
+  const [isDisplayMobileMenu, setDisplayMobileMenu] = useState(false);
+
+  const onBurgerBtnClick = () => {
+    setDisplayMobileMenu(!isDisplayMobileMenu);
+  };
 
   const router = useRouter();
 
@@ -47,6 +54,36 @@ const Header = () => {
   return (
     <header className={styles.main}>
       <div className={styles.headerItems}>
+        <button onClick={onBurgerBtnClick} className={styles.burgerBtn}>
+          <img src={isDisplayMobileMenu ? closeSvg.src : burgerSvg.src} />
+        </button>
+
+        {isDisplayMobileMenu && (
+          <div className={styles.mobileMenu}>
+            <nav>
+              <ul className={styles.mobileNavbar}>
+                <li>
+                  <Link href="/about">
+                    {" "}
+                    <img src={aboutSvg.src} alt="about us" /> About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contacts">
+                    {" "}
+                    <img src={contactsSvg.src} alt="contacts" /> Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/questions">
+                    {" "}
+                    <img src={questionsSvg.src} alt="questions" /> Questions
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )}
         <div className={styles.logoWrapper}>
           <Link href="/" className={styles.logo}>
             <img src={logo.src} alt="" />
@@ -55,13 +92,22 @@ const Header = () => {
 
         <ul className={styles.navbar}>
           <li>
-            <Link href="/about"> <img src={aboutSvg.src} alt="about us" /> About Us</Link>
+            <Link href="/about">
+              {" "}
+              <img src={aboutSvg.src} alt="about us" /> About Us
+            </Link>
           </li>
           <li>
-            <Link href="/contacts"> <img src={contactsSvg.src} alt="contacts" /> Contact Us</Link>
+            <Link href="/contacts">
+              {" "}
+              <img src={contactsSvg.src} alt="contacts" /> Contact Us
+            </Link>
           </li>
           <li>
-            <Link href="/questions"> <img src={questionsSvg.src} alt="questions" /> Questions</Link>
+            <Link href="/questions">
+              {" "}
+              <img src={questionsSvg.src} alt="questions" /> Questions
+            </Link>
           </li>
         </ul>
 

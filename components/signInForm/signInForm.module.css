@@ -6,7 +6,7 @@
   align-items: center;
   gap: 1rem;
   width: 20rem;
-  height: 22rem;
+  height: 23rem;
   padding-top: 2rem;
   border-radius: 8px;
   box-shadow: 0px 12px 14px 1px var(--primary-color);
@@ -16,6 +16,12 @@
 .inputGroup {
   display: flex;
   flex-direction: column;
+  width: 200px;
+}
+
+.inputGroup label,
+.signInWrapper h1 {
+  color: var(--primary-color);
 }
 
 .wrapper input {
@@ -33,4 +39,8 @@
 
 .signInBtn {
   padding: 4px 5px;
+}
+
+.pswValid {
+  font-size: 11px;
 }

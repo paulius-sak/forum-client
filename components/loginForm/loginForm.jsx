@@ -51,7 +51,7 @@ const LoginForm = () => {
 
   return (
     <section className={styles.loginWrapper}>
-      <h1>LOGIN</h1>
+      <h1>Login</h1>
       <div className={styles.inputGroup}>
         <label htmlFor="">email</label>
         <input

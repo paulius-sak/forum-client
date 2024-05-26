@@ -16,6 +16,12 @@
 .inputGroup {
   display: flex;
   flex-direction: column;
+  width: 200px;
+}
+
+.inputGroup label,
+.loginWrapper h1 {
+  color: var(--primary-color);
 }
 
 .wrapper input {
