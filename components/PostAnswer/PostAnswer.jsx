@@ -42,10 +42,7 @@ const PostAnswer = () => {
       }
     } catch (err) {
       console.log("err", err);
-      if (err.response.status === 401) {
-        alert("you need to be logged in to post an answer");
-        router.push("/signInLogin")
-      }
+      
     }
   };
   return (

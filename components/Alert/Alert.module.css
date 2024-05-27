@@ -1,0 +1,18 @@
+.wrapper {
+    max-width: 400px;
+    background-color: rgb(243, 220, 178);
+    border-radius: 5px;
+    border: 1px solid grey;
+    margin: 2rem;
+    padding: 3rem;
+}
+
+.wrapper h4 {
+    color: var(--button-blue);
+}
+.wrapper a{
+    text-decoration: none;
+}
+.wrapper a:hover{
+    text-decoration: underline;
+}

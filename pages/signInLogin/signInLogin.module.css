@@ -16,3 +16,7 @@
    color: rgb(34, 33, 33);
     transition: 0.3s ease-out;
 }
+
+.blueText {
+    color: var(--button-blue);
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./loginForm.module.css";
+import styles from "./LoginForm.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import cookies from "js-cookie";

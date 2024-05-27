@@ -11,3 +11,10 @@
     padding: 1rem;
     text-align: end;
 }
+
+@media (max-width: 768px) {
+    .askLink {
+        display: flex;
+        justify-content: center;
+    }
+}

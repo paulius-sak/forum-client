@@ -108,7 +108,6 @@ const Question = () => {
 
   const questionUser = users.find((user) => user.id === question?.user_id);
 
-
   return (
     <PageTemplate>
       {question && (

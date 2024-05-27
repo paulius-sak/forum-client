@@ -1,6 +1,7 @@
 import React from "react";
 import AnswerCard from "../AnswerCard/AnswerCard";
 import PostAnswer from "../PostAnswer/PostAnswer";
+import Alert from "../Alert/Alert";
 
 const AnswerWrapper = ({ answers, noAnswers, DeleteAnswer, user, users }) => {
   return (
@@ -24,7 +25,7 @@ const AnswerWrapper = ({ answers, noAnswers, DeleteAnswer, user, users }) => {
         ))
       )}
 
-      <PostAnswer />
+      {user ? <PostAnswer /> : <Alert text="Please login to post answer."/>}
     </section>
   );
 };

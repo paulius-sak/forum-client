@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import styles from "./questionCard.module.css";
+import styles from "./QuestionCard.module.css";
 import Link from "next/link";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
+
+const truncateTitle = (title, length) => {
+  return title.length > length ? `${title.substring(0, length)}...` : title;
+};
 
 const QuestionCard = ({
   id,
@@ -37,7 +41,7 @@ const QuestionCard = ({
       </section>
       <section className={styles.title}>
         <Link href={`/question/${id}`}>
-          <h2>{question_title}</h2>
+          <h2>{truncateTitle(question_title, 60)}</h2>
         </Link>
       </section>
       {isShowWarning && (

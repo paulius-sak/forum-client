@@ -4,7 +4,7 @@ import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import axios from "axios";
 import { useRouter } from "next/router";
 import cookies from "js-cookie";
-import QuestionsWrapper from "../../components/questionsWrapper/questionsWrapper";
+import QuestionsWrapper from "../../components/QuestionsWrapper/QuestionsWrapper";
 import Link from "next/link";
 import QuestionsFilter from "../../components/QuestionsFilter/QuestionsFilter";
 
@@ -13,7 +13,7 @@ const Index = () => {
   const [filteredQuestions, setFilteredQuestions] = useState([]);
   const [filter, setFilter] = useState("all");
   const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
 
   const router = useRouter();
 
@@ -57,8 +57,6 @@ const Index = () => {
     }
   };
 
-
-
   const filterQuestions = (filter) => {
     setFilter(filter);
     if (filter === "all") {
@@ -92,20 +90,20 @@ const Index = () => {
   useEffect(() => {
     fetchQuestions();
     fetchUser();
-    fetchUsers()
+    fetchUsers();
   }, []);
 
   useEffect(() => {
     filterQuestions(filter);
   }, [questions, filter]);
 
-  
-
   return (
     <PageTemplate>
       <QuestionsFilter filter={filter} onFilterChange={filterQuestions} />
       <section className={styles.askLink}>
-        <Link href="/askQuestion">Ask Question</Link>
+        <Link user={user} href="/askQuestion">
+          Ask Question
+        </Link>
       </section>
       {filteredQuestions && (
         <QuestionsWrapper

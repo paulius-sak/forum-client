@@ -2,6 +2,7 @@
     border-bottom: 1px solid grey;
     display: flex;
     gap: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 
 .userInfoWrapper {
@@ -35,4 +36,10 @@
 .infoWrapper
 .deleteBtn {
     background-color: var(--button-red);
+}
+
+@media (max-width: 576px) {
+    .answerWrapper p{
+        font-size: 14px;
+    }
 }

@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./questionsWrapper.module.css";
-import QuestionCard from "../questionCard/questionCard";
+import styles from "./QuestionsWrapper.module.css";
+import QuestionCard from "../QuestionCard/QuestionCard";
 
 const QuestionsWrapper = ({ questions, DeleteQuestion, user, users}) => {
   return (

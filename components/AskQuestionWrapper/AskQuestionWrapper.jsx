@@ -42,11 +42,6 @@ const AskQuestionWrapper = () => {
         router.back();
       }
     } catch (err) {
-      if (err.response.status === 401) {
-        alert("log in to ask a question");
-        router.push("/signInLogin");
-      }
-
       console.log("err", err);
     }
   };
@@ -85,7 +80,7 @@ const AskQuestionWrapper = () => {
       <Button
         className={styles.postBtn}
         onClick={() => askQuestion()}
-        title="Post Question"
+        title="Ask Question"
       />
 
       {isError && (

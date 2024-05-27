@@ -4,6 +4,7 @@
    --error: #eb1616;
    --button-blue: #0077ff;
    --button-red:#eb1616;
+   --input-shadow:rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 * {
   box-sizing: border-box;
