@@ -4,9 +4,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import cookies from "js-cookie";
 import Button from "../Button/Button";
-import EyeOnSvg from "../../assets/icons/eyeOn.svg"
-import EyeOffSvg from "../../assets/icons/eyeOff.svg"
-
+import EyeOnSvg from "../../assets/icons/eyeOn.svg";
+import EyeOffSvg from "../../assets/icons/eyeOff.svg";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -17,9 +16,7 @@ const LoginForm = () => {
   const [isBadData, setBadData] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-
   const onLogin = async () => {
-    
     const loginBody = {
       email: email,
       password: password,
@@ -42,13 +39,11 @@ const LoginForm = () => {
         cookies.set("jwt_token", response.data.jwt);
         router.back();
       }
-      
 
       console.log("response", response);
     } catch (err) {
       setBadData(true);
       console.log("err", err);
-      
     }
   };
 
@@ -78,11 +73,19 @@ const LoginForm = () => {
           onClick={() => setShowPassword(!showPassword)}
         />
       </div>
-      <Button className={styles.loginBtn} onClick={() => onLogin()} title="Login"/>
-      
-      {isError && <small className={styles.error}>* please fill all inputs</small>}
+      <Button
+        className={styles.loginBtn}
+        onClick={() => onLogin()}
+        title="Login"
+      />
 
-      {isBadData && <small className={styles.error}>* your provided data is bad</small>}
+      {isError && (
+        <small className={styles.error}>* please fill all inputs</small>
+      )}
+
+      {isBadData && (
+        <small className={styles.error}>* your provided data is bad</small>
+      )}
     </section>
   );
 };
