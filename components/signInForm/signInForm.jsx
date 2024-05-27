@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import styles from "./signInForm.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Link from "next/link";
 import Button from "../Button/Button";
+import EyeOnSvg from "../../assets/icons/eyeOn.svg"
+import EyeOffSvg from "../../assets/icons/eyeOff.svg"
+
 
 const SignInForm = () => {
   const router = useRouter();
@@ -14,6 +16,7 @@ const SignInForm = () => {
   const [avatarUrl, setAvatarUrl] = useState()
   const [isError, setError] = useState(false);
   const [isBadData, setBadData] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSignIn = async () => {
     const signInBody = {
@@ -70,10 +73,16 @@ const SignInForm = () => {
       <div className={styles.inputGroup}>
         <label htmlFor="">*password</label>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+        />
+        <img
+          className={styles.eyeIcon}
+          src={showPassword ? EyeOnSvg.src : EyeOffSvg.src}
+          alt="show/hide password"
+          onClick={() => setShowPassword(!showPassword)}
         />
         <span className={styles.pswValid}>*at least 6 characters and 1 number</span>
       </div>

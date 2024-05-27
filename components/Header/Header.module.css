@@ -115,6 +115,7 @@
   left: 0;
   width: 100%;
   height: calc(100vh - 80px);
+  
 }
 
 .mobileMenu nav ul {
@@ -147,9 +148,6 @@
     display: none;
   }
 
-  .linksSocialMedia {
-    display: none;
-  }
   .mobileMenu {
     display: inline-block;
     animation: mobileMenu;
@@ -161,8 +159,15 @@
     display: inline-block;
     width: 103px;
   }
-  .links {
-    width: 24px;
+  .mobileNavbar li a{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobileNavbar li a:hover {
+    text-decoration: underline;
   }
 }
 

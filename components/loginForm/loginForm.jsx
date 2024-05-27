@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import cookies from "js-cookie";
 import Button from "../Button/Button";
+import EyeOnSvg from "../../assets/icons/eyeOn.svg"
+import EyeOffSvg from "../../assets/icons/eyeOff.svg"
 
 
 const LoginForm = () => {
@@ -13,6 +15,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [isError, setError] = useState(false);
   const [isBadData, setBadData] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const onLogin = async () => {
@@ -63,10 +66,16 @@ const LoginForm = () => {
       <div className={styles.inputGroup}>
         <label htmlFor="">password</label>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+        />
+        <img
+          className={styles.eyeIcon}
+          src={showPassword ? EyeOnSvg.src : EyeOffSvg.src}
+          alt="show/hide password"
+          onClick={() => setShowPassword(!showPassword)}
         />
       </div>
       <Button className={styles.loginBtn} onClick={() => onLogin()} title="Login"/>

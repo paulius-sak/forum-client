@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   width: 200px;
+  position: relative;
 }
 
 .inputGroup label,
@@ -43,4 +44,13 @@
 
 .pswValid {
   font-size: 11px;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 5px;
+  top: 17px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
