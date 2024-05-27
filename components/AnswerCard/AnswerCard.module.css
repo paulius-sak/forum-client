@@ -1,45 +1,48 @@
 .wrapper {
-    border-bottom: 1px solid grey;
-    display: flex;
-    gap: 2rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  border-bottom: 1px solid grey;
+  display: flex;
+  gap: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 
 .userInfoWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    border-right: 1px solid grey;
-    width: 120px;
-    margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  border-right: 1px solid grey;
+  width: 120px;
+  margin: 5px 0;
 }
 .infoWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 110px;
 }
 
 .answerWrapper {
-    padding: 10px;
-    text-wrap: wrap;
+  padding: 10px;
+  white-space: pre-wrap
 }
-.answerWrapper p{
-    font-weight: 500;
+.answerWrapper p {
+  font-weight: 500;
+}
+
+.answerText {
+    white-space: pre-wrap;
 }
 
 .avatar {
-    width: 40px;
+  width: 40px;
 }
 
-.infoWrapper
-.deleteBtn {
-    background-color: var(--button-red);
+.infoWrapper .deleteBtn {
+  background-color: var(--button-red);
 }
 
 @media (max-width: 576px) {
-    .answerWrapper p{
-        font-size: 14px;
-    }
+  .answerWrapper p {
+    font-size: 14px;
+  }
 }

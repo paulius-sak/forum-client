@@ -122,7 +122,7 @@ const Question = () => {
           </div>
           <div className={styles.questionWrapper}>
             <h1>{question.question_title}</h1>
-            <p>{question.question_text}</p>
+            <p className={styles.questionText}>{question.question_text}</p>
           </div>
         </main>
       )}

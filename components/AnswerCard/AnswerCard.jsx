@@ -84,7 +84,7 @@ const AnswerCard = ({
         </section>
       </section>
       <section className={styles.answerWrapper}>
-        <p>{answer_text}</p>
+        <p className={styles.answerText}>{answer_text}</p>
       </section>
 
       {isShowWarning && (
