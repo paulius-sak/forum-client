@@ -1,0 +1,39 @@
+.wrapper {
+    border-bottom: 1px solid grey;
+    display: flex;
+    gap: 2rem;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    border-right: 1px solid grey;
+    min-width: 120px;
+    margin: 5px 0;
+}
+
+.wrapper:hover {
+    background-color: rgb(235, 232, 232);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.title a {
+    text-decoration: none;
+    color: rgb(39, 160, 241);
+}
+
+.title a:hover {
+    color: rgb(9, 142, 182);
+}
+
+.userInfo .deleteBtn {
+    background-color: var(--button-red);
+}
+
+@media (max-width: 768px) {
+    .title a h2 {
+      font-size: 16px;
+    }
+}
