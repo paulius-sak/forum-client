@@ -7,6 +7,7 @@ import cookies from "js-cookie";
 import QuestionsWrapper from "../../components/QuestionsWrapper/QuestionsWrapper";
 import Link from "next/link";
 import QuestionsFilter from "../../components/QuestionsFilter/QuestionsFilter";
+import Spinner from "@/components/Spinner/Spinner";
 
 const Index = () => {
   const [questions, setQuestions] = useState([]);
@@ -14,14 +15,18 @@ const Index = () => {
   const [filter, setFilter] = useState("all");
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(false)
 
   const router = useRouter();
 
   const fetchQuestions = async () => {
+    setLoading(true)
     try {
+      
       const response = await axios.get(`${process.env.SERVER_URL}/questions`);
       setQuestions(response.data.questions);
       setFilteredQuestions(response.data.questions);
+      setLoading(false)
     } catch (err) {
       console.log("err", err);
     }
@@ -105,13 +110,17 @@ const Index = () => {
           Ask Question
         </Link>
       </section>
-      {filteredQuestions && (
-        <QuestionsWrapper
-          DeleteQuestion={DeleteQuestion}
-          questions={filteredQuestions}
-          user={user}
-          users={users}
-        />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        filteredQuestions && (
+          <QuestionsWrapper
+            DeleteQuestion={DeleteQuestion}
+            questions={filteredQuestions}
+            user={user}
+            users={users}
+          />
+        )
       )}
     </PageTemplate>
   );
