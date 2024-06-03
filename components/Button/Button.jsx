@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./Button.module.css";
+import Spinner from "../Spinner/Spinner";
 
 
-const Button = ({ onClick, title, className }) => {
+const Button = ({ onClick, isLoading, title, className }) => {
   return (
     <button className={`${styles.button} ${className}`} onClick={onClick}>
-      {title}
+      {isLoading? <Spinner/> : <>{title}</>}
     </button>
   );
 };

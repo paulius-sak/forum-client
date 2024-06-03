@@ -11,8 +11,10 @@ const AskQuestionWrapper = () => {
   const [title, setTitle] = useState();
   const [text, setText] = useState();
   const [isError, setError] = useState(false);
+  const [isLoading, setLoading] = useState(false);
 
   const askQuestion = async () => {
+    setLoading(true);
     const questionBody = {
       question_title: title,
       question_text: text,
@@ -41,8 +43,10 @@ const AskQuestionWrapper = () => {
         cookies.get("jwt_token");
         router.back();
       }
+      setLoading(false)
     } catch (err) {
       console.log("err", err);
+      setLoading(false)
     }
   };
 
@@ -81,6 +85,7 @@ const AskQuestionWrapper = () => {
         className={styles.postBtn}
         onClick={() => askQuestion()}
         title="Ask Question"
+        isLoading={isLoading}
       />
 
       {isError && (

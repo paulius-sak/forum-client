@@ -5,4 +5,5 @@
     color: #fff;
     background-color: var(--button-blue);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    padding: 5px 10px;
 }
