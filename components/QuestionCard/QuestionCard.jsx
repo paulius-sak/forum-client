@@ -23,15 +23,10 @@ const QuestionCard = ({
 
   const questionUser = users.find((user) => user.id === user_id);
 
-
   return (
     <section className={styles.wrapper}>
       <div className={styles.cardWrapper}>
         <section className={styles.userInfo}>
-          <h5>{date.split("T")[0]}</h5>
-          <h5>Answers: {answer_count} </h5>
-
-          
           <section className={styles.user}>
             <img
               className={styles.avatar}
@@ -40,7 +35,8 @@ const QuestionCard = ({
             />
             <h5> {questionUser ? questionUser.name : "undefined"}</h5>
           </section>
-
+          <h5>{date.split("T")[0]}</h5>
+          <h5>Answers: {answer_count} </h5>
           {isCreator && (
             <Button
               title="Delete"

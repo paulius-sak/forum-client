@@ -22,6 +22,7 @@
     border-right: 1px solid grey;
     min-width: 120px;
     margin: 5px 0;
+    color: var(--primary-color);
 }
 
 .user {
@@ -32,6 +33,7 @@
 
 .avatar {
     width: 1.5rem;
+    border-radius: 50%;
 }
 
 .cardWrapper:hover {

@@ -104,6 +104,7 @@ const Index = () => {
 
   return (
     <PageTemplate>
+      <h2 className={styles.title}>All Questions</h2>
       <QuestionsFilter filter={filter} onFilterChange={filterQuestions} />
       <section className={styles.askLink}>
         <Link user={user} href="/askQuestion">

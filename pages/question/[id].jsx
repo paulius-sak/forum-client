@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import PageTemplate from "../../components/PageTemplate/PageTemplate";
 import AnswerWrapper from "@/components/AnswerWrapper/AnswerWrapper";
 import cookies from "js-cookie";
+import Spinner from "@/components/Spinner/Spinner";
 
 const Question = () => {
   const [question, setQuestion] = useState(null);
@@ -12,6 +13,7 @@ const Question = () => {
   const [noAnswers, setNoAnswers] = useState(false);
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(false)
 
   const router = useRouter();
   const { id } = router.query;
@@ -19,11 +21,13 @@ const Question = () => {
   useEffect(() => {
     if (id) {
       const fetchQuestion = async () => {
+        setLoading(true)
         try {
           const response = await axios.get(
             `${process.env.SERVER_URL}/questions/${id}`
           );
           setQuestion(response.data.question);
+          setLoading(false)
         } catch (err) {
           console.log("err", err);
         }
@@ -36,11 +40,13 @@ const Question = () => {
   useEffect(() => {
     if (id) {
       const fetchAnswers = async () => {
+        setLoading(true)
         try {
           const response = await axios.get(
             `${process.env.SERVER_URL}/questions/${id}/answers`
           );
           setAnswers(response.data.answers);
+          setLoading(false)
         } catch (err) {
           if (err.response && err.response.status === 404) {
             setNoAnswers(true);
@@ -126,7 +132,7 @@ const Question = () => {
           </div>
         </main>
       )}
-      {answers && (
+      {isLoading? (<Spinner/>) : (answers && (
         <AnswerWrapper
           answers={answers}
           noAnswers={noAnswers}
@@ -134,7 +140,7 @@ const Question = () => {
           DeleteAnswer={DeleteAnswer}
           users={users}
         />
-      )}
+      ))}
     </PageTemplate>
   );
 };
