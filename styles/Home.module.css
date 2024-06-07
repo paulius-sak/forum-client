@@ -115,7 +115,7 @@
   }
 
   .ctaButton {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -135,6 +135,9 @@
   }
   .greetings h3 {
     font-size: 14px;
+  }
+  .ctaButtons {
+    margin-top: 10px;
   }
 }
 
