@@ -45,4 +45,8 @@
   .answerWrapper p {
     font-size: 14px;
   }
+  .wrapper {
+    gap: 5px;
+    padding: 10px;
+  }
 }

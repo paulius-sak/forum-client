@@ -10,8 +10,7 @@
     border-radius: 1rem;
     display: flex;
     gap: 2rem;
-    background-color: rgb(250, 249, 249)
-    
+    background-color: rgb(250, 249, 249) 
 }
 
 .userInfo {
@@ -56,5 +55,9 @@
 @media (max-width: 768px) {
     .title a h2 {
       font-size: 16px;
+    }
+    .cardWrapper {
+        gap: 1rem;
+        padding: 10px;
     }
 }

@@ -115,7 +115,6 @@
   left: 0;
   width: 100%;
   height: calc(100vh - 70px);
-  
 }
 
 .mobileMenu nav ul {
@@ -127,7 +126,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 30%;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 .mobileMenu nav ul li a {
@@ -168,6 +167,9 @@
 
   .mobileNavbar li a:hover {
     text-decoration: underline;
+  }
+  .headerItems {
+    padding: 10px 0;
   }
 }
 
