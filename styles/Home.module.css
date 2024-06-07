@@ -43,7 +43,6 @@
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s;
-  width: 146px;
 }
 
 .ctaButton:hover {
