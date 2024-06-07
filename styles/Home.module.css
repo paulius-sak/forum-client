@@ -50,7 +50,7 @@
 }
 
 .features {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -101,7 +101,7 @@
   }
   .features {
     flex-direction: column;
-    gap: 2rem;
+    gap: 0rem;
     align-items: center;
   }
 
@@ -134,7 +134,7 @@
     font-size: 18px;
   }
   .greetings h3 {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
