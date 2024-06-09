@@ -15,18 +15,30 @@ const Index = () => {
   const [filter, setFilter] = useState("all");
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const questionsPerPage = 3;
 
+  
   const router = useRouter();
 
-  const fetchQuestions = async () => {
-    setLoading(true)
+  const fetchQuestions = async (page = 1) => {
+    setLoading(true);
     try {
-      
-      const response = await axios.get(`${process.env.SERVER_URL}/questions`);
-      setQuestions(response.data.questions);
-      setFilteredQuestions(response.data.questions);
-      setLoading(false)
+      const response = await axios.get(`${process.env.SERVER_URL}/questions`, {
+        params: { page, limit: questionsPerPage},
+
+      });
+
+      const { questions, totalPages, currentPage } = response.data;
+
+      setQuestions(questions);
+      setFilteredQuestions(questions);
+      setTotalPages(totalPages);
+      setCurrentPage(currentPage);
+      setLoading(false);
+
     } catch (err) {
       console.log("err", err);
     }
@@ -86,17 +98,24 @@ const Index = () => {
         }
       );
 
-      fetchQuestions();
+      fetchQuestions(currentPage);
     } catch (err) {
       console.log("err", err);
     }
   };
 
+  const handlePageChange = (newPage) => {
+    if (newPage > 0 && newPage <= totalPages) {
+      setCurrentPage(newPage);
+      fetchQuestions(newPage);
+    }
+  };
+
   useEffect(() => {
-    fetchQuestions();
+    fetchQuestions(currentPage);
     fetchUser();
     fetchUsers();
-  }, []);
+  }, [currentPage, totalPages]);
 
   useEffect(() => {
     filterQuestions(filter);
@@ -115,12 +134,29 @@ const Index = () => {
         <Spinner />
       ) : (
         filteredQuestions && (
-          <QuestionsWrapper
-            DeleteQuestion={DeleteQuestion}
-            questions={filteredQuestions}
-            user={user}
-            users={users}
-          />
+          <>
+            <QuestionsWrapper
+              DeleteQuestion={DeleteQuestion}
+              questions={filteredQuestions}
+              user={user}
+              users={users}
+            />
+            <div className={styles.pagination}>
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                Previous
+              </button>
+              <span>{`Page ${currentPage} of ${totalPages}`}</span>
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                Next
+              </button>
+            </div>
+          </>
         )
       )}
     </PageTemplate>

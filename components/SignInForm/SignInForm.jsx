@@ -62,6 +62,12 @@ const SignInForm = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onLogin();
+    }
+  };
+
   return (
     <section className={styles.signInWrapper}>
       <h1>Sign-In</h1>
@@ -70,6 +76,7 @@ const SignInForm = () => {
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
+          onKeyDown={handleKeyDown}
           required
         />
       </div>
@@ -78,6 +85,7 @@ const SignInForm = () => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyDown={handleKeyDown}
           required
         />
       </div>
@@ -87,6 +95,7 @@ const SignInForm = () => {
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handleKeyDown}
           required
         />
         <img
@@ -104,6 +113,7 @@ const SignInForm = () => {
         <input
           value={avatarUrl}
           onChange={(e) => setAvatarUrl(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
       </div>
       <Button className={styles.signInBtn} title="Sign-In" onClick={onSignIn} />

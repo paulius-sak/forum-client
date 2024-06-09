@@ -47,6 +47,12 @@ const LoginForm = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      onLogin();
+    }
+  };
+
   return (
     <section className={styles.loginWrapper}>
       <h1>Login</h1>
@@ -55,6 +61,7 @@ const LoginForm = () => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyDown={handleKeyDown}
           required
         />
       </div>
@@ -64,6 +71,7 @@ const LoginForm = () => {
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handleKeyDown}
           required
         />
         <img

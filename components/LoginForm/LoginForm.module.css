@@ -11,6 +11,7 @@
   border-radius: 8px;
   box-shadow: 0px 12px 14px 1px var(--primary-color);
   backdrop-filter: blur(2px);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .inputGroup {
@@ -20,6 +21,15 @@
   position: relative;
 }
 
+.inputGroup input {
+  font-size: 16px;
+  padding: 2px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  color: rgb(44, 41, 41);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .inputGroup label,
 .loginWrapper h1 {
   color: var(--primary-color);
@@ -27,7 +37,6 @@
 
 .wrapper input {
   padding: 5px;
-  
 }
 
 .wrapper button {
@@ -40,13 +49,13 @@
 }
 
 .loginBtn {
-  padding: 4px 5px;
+  padding: 8px 20px;
 }
 
 .eyeIcon {
   position: absolute;
   right: 5px;
-  top: 17px;
+  top: 20px;
   cursor: pointer;
   width: 20px;
   height: 20px;
