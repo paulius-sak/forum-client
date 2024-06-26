@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background-color: #fff;
+  background-color: #111214;
 }
 .headerItems {
   display: flex;
@@ -14,6 +14,7 @@
 }
 .logo {
   text-decoration: none;
+  color: #fff;
 }
 
 .navbar {
@@ -28,15 +29,16 @@
 }
 .navbar li a {
   text-decoration: none;
-  color: rgb(70, 69, 69);
+  color: #c5c4c4;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.navbar li a:hover {
-  border-bottom: 0.5px solid rgb(156, 155, 155);
+.activeLink {
+  border-bottom: 2px solid rgb(156, 155, 155);
 }
+
 .login {
   display: flex;
   gap: 1rem;
@@ -62,6 +64,7 @@
 .hiUser {
   font-weight: 600;
   text-align: center;
+  color: #c5c4c4;
 }
 
 .tooltipContainer {
@@ -102,6 +105,7 @@
 .burgerBtn {
   all: unset;
   display: none;
+  cursor: pointer;
 }
 
 .mobileMenu {
@@ -110,11 +114,11 @@
 
 .mobileMenu {
   position: fixed;
-  background-color: #fff;
-  top: 60px;
+  background-color: var(--secondary-color);
+  top: 55px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 55px);
 }
 
 .mobileMenu nav ul {
@@ -165,11 +169,17 @@
     align-items: center;
   }
 
-  .mobileNavbar li a:hover {
-    text-decoration: underline;
-  }
   .headerItems {
     padding: 10px 0;
+  }
+
+  .tooltipLogin {
+    left: 120%;
+    transform: translateY(20%);
+  }
+  .tooltipLogout {
+    left: 120%;
+    transform: translateY(1%);
   }
 }
 

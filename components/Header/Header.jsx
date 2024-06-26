@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Header/Header.module.css";
-import logo from "../../assets/logo/Riddle.png";
 import loginSvg from "../../assets/icons/logIn.svg";
 import logoutSvg from "../../assets/icons/logout.svg";
 import Link from "next/link";
@@ -17,6 +16,7 @@ const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState(null);
   const [isDisplayMobileMenu, setDisplayMobileMenu] = useState(false);
+  const [activeLink, setActiveLink] = useState(null);
 
   const onBurgerBtnClick = () => {
     setDisplayMobileMenu(!isDisplayMobileMenu);
@@ -51,6 +51,10 @@ const Header = () => {
     router.push("/");
   };
 
+  useEffect(() => {
+    setActiveLink(router.pathname);
+  }, [router.pathname]);
+
   return (
     <header className={styles.main}>
       <div className={styles.headerItems}>
@@ -63,20 +67,30 @@ const Header = () => {
             <nav>
               <ul className={styles.mobileNavbar}>
                 <li>
-                  <Link href="/about">
-                    {" "}
+                  <Link
+                    href="/about"
+                    className={activeLink === "/about" ? styles.activeLink : ""}
+                  >
                     <img src={aboutSvg.src} alt="about us" /> About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contacts">
-                    {" "}
+                  <Link
+                    href="/contacts"
+                    className={
+                      activeLink === "/contacts" ? styles.activeLink : ""
+                    }
+                  >
                     <img src={contactsSvg.src} alt="contacts" /> Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/questions">
-                    {" "}
+                  <Link
+                    href="/questions"
+                    className={
+                      activeLink === "/questions" ? styles.activeLink : ""
+                    }
+                  >
                     <img src={questionsSvg.src} alt="questions" /> Questions
                   </Link>
                 </li>
@@ -86,26 +100,32 @@ const Header = () => {
         )}
         <div className={styles.logoWrapper}>
           <Link href="/" className={styles.logo}>
-            <img src={logo.src} alt="" />
+            <h3>Riddle</h3>
           </Link>
         </div>
 
         <ul className={styles.navbar}>
           <li>
-            <Link href="/about">
-              {" "}
+            <Link
+              href="/about"
+              className={activeLink === "/about" ? styles.activeLink : ""}
+            >
               <img src={aboutSvg.src} alt="about us" /> About Us
             </Link>
           </li>
           <li>
-            <Link href="/contacts">
-              {" "}
+            <Link
+              href="/contacts"
+              className={activeLink === "/contacts" ? styles.activeLink : ""}
+            >
               <img src={contactsSvg.src} alt="contacts" /> Contact Us
             </Link>
           </li>
           <li>
-            <Link href="/questions">
-              {" "}
+            <Link
+              href="/questions"
+              className={activeLink === "/questions" ? styles.activeLink : ""}
+            >
               <img src={questionsSvg.src} alt="questions" /> Questions
             </Link>
           </li>

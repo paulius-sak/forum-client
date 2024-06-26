@@ -18,17 +18,15 @@ const Index = () => {
   const [isLoading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const questionsPerPage = 3;
+  const questionsPerPage = 5;
 
-  
   const router = useRouter();
 
-  const fetchQuestions = async (page = 1) => {
+  const fetchQuestions = async (page = 1, filter = "all") => {
     setLoading(true);
     try {
       const response = await axios.get(`${process.env.SERVER_URL}/questions`, {
-        params: { page, limit: questionsPerPage},
-
+        params: { page, limit: questionsPerPage, filter },
       });
 
       const { questions, totalPages, currentPage } = response.data;
@@ -38,7 +36,6 @@ const Index = () => {
       setTotalPages(totalPages);
       setCurrentPage(currentPage);
       setLoading(false);
-
     } catch (err) {
       console.log("err", err);
     }
@@ -76,13 +73,7 @@ const Index = () => {
 
   const filterQuestions = (filter) => {
     setFilter(filter);
-    if (filter === "all") {
-      setFilteredQuestions(questions);
-    } else if (filter === "answered") {
-      setFilteredQuestions(questions.filter((q) => q.answer_count > 0));
-    } else if (filter === "unanswered") {
-      setFilteredQuestions(questions.filter((q) => q.answer_count === 0));
-    }
+    fetchQuestions(1, filter);
   };
 
   const DeleteQuestion = async (id) => {
@@ -107,19 +98,16 @@ const Index = () => {
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
       setCurrentPage(newPage);
-      fetchQuestions(newPage);
+      fetchQuestions(newPage, filter);
     }
   };
 
   useEffect(() => {
-    fetchQuestions(currentPage);
+    fetchQuestions(currentPage, filter);
     fetchUser();
     fetchUsers();
-  }, [currentPage, totalPages]);
+  }, [currentPage, filter]);
 
-  useEffect(() => {
-    filterQuestions(filter);
-  }, [questions, filter]);
 
   return (
     <PageTemplate>

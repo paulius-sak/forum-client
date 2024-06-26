@@ -10,7 +10,7 @@
     border-radius: 1rem;
     display: flex;
     gap: 2rem;
-    background-color: rgb(250, 249, 249) 
+    background-color: var(--secondary-color) 
 }
 
 .userInfo {

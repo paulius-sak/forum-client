@@ -1,8 +1,8 @@
 .wrapper {
     max-width: 400px;
     background-color: rgb(243, 220, 178);
-    border-radius: 5px;
-    border: 1px solid grey;
+    border-left: 4px solid rgb(255, 154, 3);
+    border-radius: 2px;
     margin: 2rem;
     padding: 3rem;
 }

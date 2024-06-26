@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 2rem;
     margin: 1rem;
+    color: var(--text-color);
 }
 
 .pageTitle {
@@ -25,8 +26,8 @@
     font-size: 16px;
     box-shadow: var(--input-shadow);
     border-radius: 4px;
-    border: 1px solid #ccc;
     padding: 1rem;
+    background-color: var(--secondary-color);
 }
 
 .wrapper button {

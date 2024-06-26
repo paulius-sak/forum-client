@@ -24,6 +24,7 @@
     align-items: center;
     gap: 1rem;
     margin: 1rem;
+    color: var(--text-color);
   }
   
   .pagination button {
@@ -33,11 +34,13 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 600;
   }
   
   .pagination button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+    color: var(--primary-color);
   }
 
 @media (max-width: 768px) {

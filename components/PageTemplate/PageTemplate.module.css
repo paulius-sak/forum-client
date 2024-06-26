@@ -1,19 +1,24 @@
-.content {
-    flex: 1;
-    min-height: 54.2vh;
-    max-width: 1200px;
-    margin: auto;
-    margin-bottom: 100px;
+.wrapper {
+  background-image: url("../../assets/wallpaper/wallpaper.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-
+.content {
+  flex: 1;
+  min-height: 54.2vh;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 100px;
+}
 
 @media only screen and (max-width: 768px) {
-    .content {
-        margin-bottom: 30px;
-    }
+  .content {
+    margin-bottom: 30px;
+  }
 }
 @media only screen and (max-width: 576px) {
-    .content {
-        margin-bottom: 0;
-    }
+  .content {
+    margin-bottom: 0;
+  }
 }
