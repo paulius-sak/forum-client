@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AnswerCard.module.css";
 import cookies from "js-cookie";
 import axios from "axios";
@@ -17,9 +17,21 @@ const AnswerCard = ({
   users,
 }) => {
   const [isShowWarning, setShowWarning] = useState(false);
-  const answerUser = users.find((user) => user.id === user_id);
+  const [likes, setLikes] = useState(gained_likes.length);
+  const [dislikes, setDislikes] = useState(gained_dislikes.length);
+  const [userHasLiked, setUserHasLiked] = useState(false);
+  const [userHasDisliked, setUserHasDisliked] = useState(false);
 
+  const answerUser = users.find((user) => user.id === user_id);
   const isCreator = user && user.id === user_id;
+
+  useEffect(() => {
+    const currentUserID = user?.id;
+    if (currentUserID) {
+      setUserHasLiked(gained_likes.includes(currentUserID));
+      setUserHasDisliked(gained_dislikes.includes(currentUserID));
+    }
+  }, [gained_likes, gained_dislikes, user]);
 
   const handleLike = async () => {
     try {
@@ -31,7 +43,18 @@ const AnswerCard = ({
         {},
         { headers }
       );
-      window.location.reload();
+      if (userHasLiked) {
+        setLikes(likes - 1);
+        setUserHasLiked(false);
+      } else {
+        setLikes(likes + 1);
+        setUserHasLiked(true);
+
+        if (userHasDisliked) {
+          setDislikes(dislikes - 1);
+          setUserHasDisliked(false);
+        }
+      }
     } catch (err) {
       if (err.response.status === 401) {
         alert("login to like or dislike answer");
@@ -50,7 +73,18 @@ const AnswerCard = ({
         {},
         { headers }
       );
-      window.location.reload();
+      if (userHasDisliked) {
+        setDislikes(dislikes - 1);
+        setUserHasDisliked(false);
+      } else {
+        setDislikes(dislikes + 1);
+        setUserHasDisliked(true);
+
+        if (userHasLiked) {
+          setLikes(likes - 1);
+          setUserHasLiked(false);
+        }
+      }
     } catch (err) {
       if (err.response.status === 401) {
         alert("login to like or dislike answer");
@@ -67,8 +101,8 @@ const AnswerCard = ({
           <img className={styles.avatar} src={answerUser?.avatarUrl} alt="" />
         </section>
         <section className={styles.infoWrapper}>
-          <h5>Liked: {gained_likes.length}</h5>
-          <h5>Disliked: {gained_dislikes.length}</h5>
+          <h5>Liked: {likes}</h5>
+          <h5>Disliked: {dislikes}</h5>
           <h6>{date.split("T")[0]}</h6>
 
           <Button onClick={() => handleLike()} title="Like" />
