@@ -136,7 +136,7 @@ const Index = () => {
               >
                 Previous
               </button>
-              <span>{`Page ${currentPage} of ${totalPages}`}</span>
+              <span>{` ${currentPage} / ${totalPages}`}</span>
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}

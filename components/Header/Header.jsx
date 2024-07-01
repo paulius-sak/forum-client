@@ -145,7 +145,9 @@ const Header = () => {
             </div>
           ) : (
             <div className={styles.userWrapper}>
-              <span className={styles.hiUser}>Hi {user.name}</span>
+              <Link className={styles.hiUserWrapper} href="/account">
+                <span className={styles.hiUser}>Hi {user.name}</span>
+              </Link>
               <div className={`${styles.logout} ${styles.tooltipContainer}`}>
                 <button onClick={logout}>
                   <img src={logoutSvg.src} alt="logout" />
