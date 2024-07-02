@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../Header/Header.module.css";
 import loginSvg from "../../assets/icons/logIn.svg";
-import logoutSvg from "../../assets/icons/logout.svg";
 import Link from "next/link";
 import cookies from "js-cookie";
 import { useRouter } from "next/router";
@@ -11,15 +10,23 @@ import contactsSvg from "../../assets/icons/contacts.svg";
 import questionsSvg from "../../assets/icons/questions.svg";
 import burgerSvg from "../../assets/icons/burger.svg";
 import closeSvg from "../../assets/icons/close.svg";
+import downSvg from "../../assets/icons/down.svg";
+import upSvg from "../../assets/icons/up.svg";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
   const [user, setUser] = useState(null);
   const [isDisplayMobileMenu, setDisplayMobileMenu] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
+  const [isProfileMenu, setProfileMenu] = useState(false);
 
   const onBurgerBtnClick = () => {
     setDisplayMobileMenu(!isDisplayMobileMenu);
+  };
+
+  const onAccountClick = () => {
+    setProfileMenu(!isProfileMenu);
   };
 
   const router = useRouter();
@@ -145,15 +152,16 @@ const Header = () => {
             </div>
           ) : (
             <div className={styles.userWrapper}>
-              <Link className={styles.hiUserWrapper} href="/account">
-                <span className={styles.hiUser}>Hi {user.name}</span>
-              </Link>
-              <div className={`${styles.logout} ${styles.tooltipContainer}`}>
-                <button onClick={logout}>
-                  <img src={logoutSvg.src} alt="logout" />
-                </button>
-                <span className={styles.tooltipLogout}>Logout</span>
-              </div>
+              <button onClick={onAccountClick} className={styles.hiUserWrapper}>
+                <span className={styles.hiUser}>
+                  {user.name}
+                  <img src={isProfileMenu ? upSvg.src : downSvg.src} alt="" />
+                </span>
+              </button>
+
+              {isProfileMenu && (
+                <ProfileMenu logout={logout} user={user}></ProfileMenu>
+              )}
             </div>
           )}
         </div>
