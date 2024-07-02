@@ -1,6 +1,5 @@
 .wrapper {
     width: 200px;
-    height: 300px;
     position: absolute;
     top: 5rem;
     right: 8%;
@@ -17,6 +16,43 @@
     width: 60px;
     border-radius: 10px;
 }
+
+.accountInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    color: var(--primary-color);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.menu img {
+    width: 22px;
+}
+
+.profile,
+.menu button {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: black;
+    padding: 0.2rem;
+    border-radius: 5px;
+}
+
+.profile:hover,
+.menu button:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+
+
 
 .line {
     border-bottom: 1px solid var(--primary-color);
