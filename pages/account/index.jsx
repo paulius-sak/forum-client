@@ -5,9 +5,15 @@ import axios from "axios";
 import cookies from "js-cookie";
 import Spinner from "@/components/Spinner/Spinner";
 import Button from "@/components/Button/Button";
+import Modal from "@/components/Modal/Modal";
+import { useRouter } from "next/router";
 
 const Account = () => {
   const [user, setUser] = useState(null);
+  const [isShowWarning, setShowWarning] = useState(false)
+
+  const router = useRouter()
+
 
   const fetchUser = async () => {
     try {
@@ -23,6 +29,22 @@ const Account = () => {
       console.log("err", err);
     }
   };
+
+  const deleteAccount = async (id) => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
+      const response = await axios.delete(`${process.env.SERVER_URL}/user/${id}`, {
+        headers,
+        
+      });
+      router.push("/")
+    } catch (err) {
+      console.log("err", err);
+    }
+  }
 
   useEffect(() => {
     fetchUser();
@@ -43,12 +65,22 @@ const Account = () => {
               </h3>
             </section>
             <section className={styles.accountInfo}>
-              <Button title="delete account"></Button>
+              <Button onClick={() => {setShowWarning(true)}} className={styles.deleteAccBtn} title="delete account"></Button>
               
             </section>
           </>
         ) : (
           <Spinner></Spinner>
+        )}
+        {isShowWarning && (
+          <Modal
+            message="Do you really want to delete your account?"
+            onConfirm={() => {
+              setShowWarning(false);
+              deleteAccount(user.id);
+            }}
+            onCancel={() => setShowWarning(false)}
+          />
         )}
       </main>
     </PageTemplate>

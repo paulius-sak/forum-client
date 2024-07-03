@@ -24,3 +24,7 @@
     width: 100px;
     border-radius: 10px;
 }
+
+.deleteAccBtn {
+    background-color: var(--button-red);
+}

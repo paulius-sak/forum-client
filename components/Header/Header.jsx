@@ -114,6 +114,14 @@ const Header = () => {
         <ul className={styles.navbar}>
           <li>
             <Link
+              href="/questions"
+              className={activeLink === "/questions" ? styles.activeLink : ""}
+            >
+              <img src={questionsSvg.src} alt="questions" /> Questions
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/about"
               className={activeLink === "/about" ? styles.activeLink : ""}
             >
@@ -126,14 +134,6 @@ const Header = () => {
               className={activeLink === "/contacts" ? styles.activeLink : ""}
             >
               <img src={contactsSvg.src} alt="contacts" /> Contact Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/questions"
-              className={activeLink === "/questions" ? styles.activeLink : ""}
-            >
-              <img src={questionsSvg.src} alt="questions" /> Questions
             </Link>
           </li>
         </ul>
