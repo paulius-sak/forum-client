@@ -108,7 +108,6 @@ const Index = () => {
     fetchUsers();
   }, [currentPage, filter]);
 
-
   return (
     <PageTemplate>
       <h2 className={styles.title}>All Questions</h2>

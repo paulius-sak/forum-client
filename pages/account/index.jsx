@@ -7,13 +7,15 @@ import Spinner from "@/components/Spinner/Spinner";
 import Button from "@/components/Button/Button";
 import Modal from "@/components/Modal/Modal";
 import { useRouter } from "next/router";
+import UsersQuestions from "../../components/UsersQuestions/UsersQuestions";
 
 const Account = () => {
   const [user, setUser] = useState(null);
-  const [isShowWarning, setShowWarning] = useState(false)
+  const [isShowWarning, setShowWarning] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
-  const router = useRouter()
-
+  const router = useRouter();
 
   const fetchUser = async () => {
     try {
@@ -26,7 +28,7 @@ const Account = () => {
       });
       setUser(response.data.user);
     } catch (err) {
-      console.log("err", err);
+      console.log("Error fetching user:", err);
     }
   };
 
@@ -36,19 +38,66 @@ const Account = () => {
         authorization: cookies.get("jwt_token"),
       };
 
-      const response = await axios.delete(`${process.env.SERVER_URL}/user/${id}`, {
+      await axios.delete(`${process.env.SERVER_URL}/user/${id}`, {
         headers,
-        
       });
-      router.push("/")
+      router.push("/");
+    } catch (err) {
+      console.log("Error deleting account:", err);
+    }
+  };
+
+  const fetchQuestions = async () => {
+    setLoading(true);
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
+      const response = await axios.get(`${process.env.SERVER_URL}/user/questions`,
+         {
+          headers,
+        });
+      const { questions } = response.data; // Assuming response.data contains { questions: [...] }
+
+      console.log("Fetched questions:", questions);
+      setQuestions(Array.isArray(questions) ? questions : []);
+      setLoading(false);
+    } catch (err) {
+      console.log("Error fetching questions:", err);
+      setLoading(false);
+    }
+  };
+
+  const DeleteQuestion = async (id) => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+      console.log(id)
+
+      const response = await axios.delete(
+        `${process.env.SERVER_URL}/questions/${id}`,
+        {
+          headers,
+        }
+      );
+
+      router.reload()
     } catch (err) {
       console.log("err", err);
     }
-  }
+  };
 
   useEffect(() => {
     fetchUser();
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetchQuestions();
+    }
+  }, [user]);
 
   return (
     <PageTemplate>
@@ -59,19 +108,27 @@ const Account = () => {
             <section className={styles.accountInfo}>
               <h3>name: {user.name}</h3>
               <h3>email: {user.email}</h3>
-              <h3>
-                avatar:
-                <img className={styles.avatar} src={user.avatarUrl} alt="" />
-              </h3>
+              <img className={styles.avatar} src={user.avatarUrl} alt="" />
             </section>
-            <section className={styles.accountInfo}>
-              <Button onClick={() => {setShowWarning(true)}} className={styles.deleteAccBtn} title="delete account"></Button>
-              
+
+            {isLoading ? (
+              <Spinner />
+            ) : (
+              <UsersQuestions DeleteQuestion={DeleteQuestion}  questions={questions} user={user} />
+            )}
+
+            <section className={styles.deleteAccount}>
+              <Button
+                onClick={() => setShowWarning(true)}
+                className={styles.deleteAccBtn}
+                title="delete account"
+              />
             </section>
           </>
         ) : (
-          <Spinner></Spinner>
+          <Spinner />
         )}
+
         {isShowWarning && (
           <Modal
             message="Do you really want to delete your account?"

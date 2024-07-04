@@ -14,7 +14,8 @@
     color: var(--primary-color);
 }
 
-.accountInfo {
+.accountInfo,
+.deleteAccount {
     background-color: var(--secondary-color);
     padding: 1.5rem;
     border-radius: 8px;
