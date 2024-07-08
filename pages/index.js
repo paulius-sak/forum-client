@@ -5,6 +5,10 @@ import Button from "../components/Button/Button";
 import Link from "next/link";
 
 const Index = () => {
+
+
+  
+
   return (
     <PageTemplate>
       <main className={styles.wrapper}>

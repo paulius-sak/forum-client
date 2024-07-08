@@ -134,8 +134,10 @@
   background-color: var(--secondary-color);
   top: 55px;
   left: 0;
-  width: 100%;
-  height: calc(100vh - 55px);
+  width: 50%;
+  padding: 1rem;
+  border: 1px solid var(--primary-color);
+  border-bottom-right-radius: 1rem;
 }
 
 .mobileMenu nav ul {
@@ -145,7 +147,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 30%;
   gap: 3rem;
 }
@@ -172,7 +174,7 @@
     display: inline-block;
     animation: mobileMenu;
     animation-duration: 0.3s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: left;
   }
 
   .burgerBtn {
@@ -201,11 +203,10 @@
 }
 
 @keyframes mobileMenu {
-  0% {
-    opacity: 0;
+  from {
+    left: -50%; 
   }
-
-  100% {
-    opacity: 1;
+  to {
+    left: 0;
   }
 }

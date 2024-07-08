@@ -13,6 +13,7 @@ import closeSvg from "../../assets/icons/close.svg";
 import downSvg from "../../assets/icons/down.svg";
 import upSvg from "../../assets/icons/up.svg";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
+import HomeSvg from "../../assets/icons/home.svg";
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -75,6 +76,24 @@ const Header = () => {
               <ul className={styles.mobileNavbar}>
                 <li>
                   <Link
+                    href="/"
+                    className={activeLink === "/" ? styles.activeLink : ""}
+                  >
+                    <img src={HomeSvg.src} alt="home" /> Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/questions"
+                    className={
+                      activeLink === "/questions" ? styles.activeLink : ""
+                    }
+                  >
+                    <img src={questionsSvg.src} alt="questions" /> Questions
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/about"
                     className={activeLink === "/about" ? styles.activeLink : ""}
                   >
@@ -89,16 +108,6 @@ const Header = () => {
                     }
                   >
                     <img src={contactsSvg.src} alt="contacts" /> Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/questions"
-                    className={
-                      activeLink === "/questions" ? styles.activeLink : ""
-                    }
-                  >
-                    <img src={questionsSvg.src} alt="questions" /> Questions
                   </Link>
                 </li>
               </ul>

@@ -21,6 +21,14 @@
   gap: 5px;
   width: 110px;
 }
+.infoWrapper button {
+  background-color: var(--primary-color);
+}
+
+.infoWrapper button:hover {
+  backdrop-filter: blur(10%);
+}
+
 
 .answerWrapper {
   padding: 10px;

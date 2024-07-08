@@ -17,6 +17,10 @@ const Account = () => {
 
   const router = useRouter();
 
+  const truncateTitle = (title, length) => {
+    return title.length > length ? `${title.substring(0, length)}...` : title;
+  };
+
   const fetchUser = async () => {
     try {
       const headers = {
@@ -58,7 +62,7 @@ const Account = () => {
          {
           headers,
         });
-      const { questions } = response.data; // Assuming response.data contains { questions: [...] }
+      const { questions } = response.data;
 
       console.log("Fetched questions:", questions);
       setQuestions(Array.isArray(questions) ? questions : []);
@@ -114,14 +118,14 @@ const Account = () => {
             {isLoading ? (
               <Spinner />
             ) : (
-              <UsersQuestions DeleteQuestion={DeleteQuestion}  questions={questions} user={user} />
+              <UsersQuestions truncateTitle={truncateTitle} DeleteQuestion={DeleteQuestion}  questions={questions} user={user} />
             )}
 
             <section className={styles.deleteAccount}>
               <Button
                 onClick={() => setShowWarning(true)}
                 className={styles.deleteAccBtn}
-                title="delete account"
+                title="Delete account"
               />
             </section>
           </>

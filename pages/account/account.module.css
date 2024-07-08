@@ -1,31 +1,34 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
-
 .title {
-    color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.accountInfo {
+  width: 100%;
 }
 
 .accountInfo,
 .deleteAccount {
-    background-color: var(--secondary-color);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .avatar {
-    width: 100px;
-    border-radius: 10px;
+  width: 100px;
+  border-radius: 10px;
 }
 
-.deleteAccBtn {
-    background-color: var(--button-red);
+.deleteAccount .deleteAccBtn {
+  background-color: var(--primary-color);
 }

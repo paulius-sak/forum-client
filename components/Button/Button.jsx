@@ -3,10 +3,10 @@ import styles from "./Button.module.css";
 import Spinner from "../Spinner/Spinner";
 
 
-const Button = ({ onClick, isLoading, title, className }) => {
+const Button = ({ onClick, isLoading, title, className, children }) => {
   return (
-    <button className={`${styles.button} ${className}`} onClick={onClick}>
-      {isLoading? <Spinner/> : <>{title}</>}
+    <button className={`${className} ${styles.button} `} onClick={onClick}>
+      {isLoading ? <Spinner /> : children ? children : <>{title}</>}
     </button>
   );
 };

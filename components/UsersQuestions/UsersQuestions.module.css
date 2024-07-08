@@ -1,6 +1,55 @@
 .wrapper {
-    background-color: var(--secondary-color);
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-color);
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 1rem;
+}
+
+
+
+.deleteBtn {
+  background-color: var(--button-red);
+  width: 5rem;
+}
+
+.questionCard {
+  border: 1px solid var(--primary-color);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.questionCard:hover {
+  background-color: rgb(235, 232, 232);
+}
+
+.questionCard a,
+.title {
+  text-decoration: none;
+  text-align: center;
+  color: var(--primary-color);
+  padding: 1rem;
+}
+
+
+
+.questionTitle {
+  color: var(--button-blue);
+}
+
+.questionTitle:hover {
+    color: rgb(9, 142, 182);
+
+}
+
+.date {
+  color: var(--primary-color);
+}
+
+.noQuestions {
+  text-align: center;
 }
