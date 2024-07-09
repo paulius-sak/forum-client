@@ -41,6 +41,7 @@
 .title a {
     text-decoration: none;
     color: rgb(39, 160, 241);
+    text-wrap: balance;
 }
 .title h2 {
     padding-top: 0.5rem;

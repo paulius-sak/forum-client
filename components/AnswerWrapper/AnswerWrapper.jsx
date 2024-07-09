@@ -2,12 +2,13 @@ import React from "react";
 import AnswerCard from "../AnswerCard/AnswerCard";
 import PostAnswer from "../PostAnswer/PostAnswer";
 import Alert from "../Alert/Alert";
+import styles from "./AnswerWrapper.module.css"
 
 const AnswerWrapper = ({ answers, noAnswers, DeleteAnswer, user, users }) => {
   return (
     <section>
       {noAnswers ? (
-        <div>There are no answers yet</div>
+        <div className={styles.noAnswersTitle}>There are no answers yet</div>
       ) : (
         answers.map((answer) => (
           <AnswerCard
