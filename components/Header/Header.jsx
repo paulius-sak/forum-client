@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../Header/Header.module.css";
 import loginSvg from "../../assets/icons/logIn.svg";
 import Link from "next/link";
@@ -14,6 +14,7 @@ import downSvg from "../../assets/icons/down.svg";
 import upSvg from "../../assets/icons/up.svg";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import HomeSvg from "../../assets/icons/home.svg";
+import useOutsideClick from "../../closeMenuFunc/closeMenuFunc.js";
 
 const Header = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -21,16 +22,21 @@ const Header = () => {
   const [isDisplayMobileMenu, setDisplayMobileMenu] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
   const [isProfileMenu, setProfileMenu] = useState(false);
+  const mobileMenuRef = useRef(null);
+  const profileMenuRef = useRef(null);
 
-  const onBurgerBtnClick = () => {
+  const router = useRouter();
+
+  const onBurgerBtnClick = (e) => {
+    e.stopPropagation();
     setDisplayMobileMenu(!isDisplayMobileMenu);
   };
 
-  const onAccountClick = () => {
+  const onAccountClick = (e) => {
+    e.stopPropagation();
     setProfileMenu(!isProfileMenu);
   };
 
-  const router = useRouter();
 
   const fetchLoggedUser = async () => {
     try {
@@ -59,6 +65,17 @@ const Header = () => {
     router.push("/");
   };
 
+  const closeMobileMenu = () => {
+    setDisplayMobileMenu(false);
+  };
+
+  const closeProfileMenu = () => {
+    setProfileMenu(false);
+  };
+
+  useOutsideClick(mobileMenuRef, closeMobileMenu);
+  useOutsideClick(profileMenuRef, closeProfileMenu);
+
   useEffect(() => {
     setActiveLink(router.pathname);
   }, [router.pathname]);
@@ -71,7 +88,7 @@ const Header = () => {
         </button>
 
         {isDisplayMobileMenu && (
-          <div className={styles.mobileMenu}>
+          <div className={styles.mobileMenu} ref={mobileMenuRef}>
             <nav>
               <ul className={styles.mobileNavbar}>
                 <li>
@@ -160,7 +177,7 @@ const Header = () => {
               <span className={styles.tooltipLogin}>Login</span>
             </div>
           ) : (
-            <div className={styles.userWrapper}>
+            <div className={styles.userWrapper} ref={profileMenuRef}>
               <button onClick={onAccountClick} className={styles.hiUserWrapper}>
                 <span className={styles.hiUser}>
                   {user.name}
@@ -169,7 +186,11 @@ const Header = () => {
               </button>
 
               {isProfileMenu && (
-                <ProfileMenu logout={logout} user={user}></ProfileMenu>
+                <ProfileMenu
+                  logout={logout}
+                  user={user}
+                  closeMenu={closeProfileMenu}
+                />
               )}
             </div>
           )}
