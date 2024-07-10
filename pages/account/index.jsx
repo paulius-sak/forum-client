@@ -8,6 +8,7 @@ import Button from "@/components/Button/Button";
 import Modal from "@/components/Modal/Modal";
 import { useRouter } from "next/router";
 import UsersQuestions from "../../components/UsersQuestions/UsersQuestions";
+import AccountUpdate from "../../components/AccountUpdate/AccountUpdate"
 
 const Account = () => {
   const [user, setUser] = useState(null);
@@ -109,11 +110,7 @@ const Account = () => {
         <h1 className={styles.title}>Profile</h1>
         {user ? (
           <>
-            <section className={styles.accountInfo}>
-              <h3>name: {user.name}</h3>
-              <h3>email: {user.email}</h3>
-              <img className={styles.avatar} src={user.avatarUrl} alt="" />
-            </section>
+            <AccountUpdate user={user}/>
 
             {isLoading ? (
               <Spinner />
