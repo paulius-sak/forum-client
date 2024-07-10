@@ -6,4 +6,30 @@
     background-color: var(--button-blue);
     box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
     padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+
+.confirmButton {
+    background-color: var(--button-blue);
+}
+
+.confirmButton:hover {
+    background-color: #0db2f3;
+}
+
+.deleteButton {
+    background-color: var(--button-red);
+}
+
+.deleteButton:hover {
+    background-color: #e63a54;
+}
+
+.neutralButton {
+    background-color: var(--button-gray);
+}
+
+.neutralButton:hover {
+    background-color: #6c757d;
 }

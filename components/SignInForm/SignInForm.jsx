@@ -116,7 +116,7 @@ const SignInForm = () => {
           onKeyDown={handleKeyDown}
         />
       </div>
-      <Button className={styles.signInBtn} title="Sign-In" onClick={onSignIn} />
+      <Button type="confirm" className={styles.signInBtn} title="Sign-In" onClick={onSignIn} />
 
       {isError && (
         <small className={styles.error}>* please fill all inputs</small>

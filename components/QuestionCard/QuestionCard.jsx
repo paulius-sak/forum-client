@@ -39,6 +39,7 @@ const QuestionCard = ({
           <h5>Answers: {answer_count} </h5>
           {isCreator && (
             <Button
+              type="delete"
               title="Delete"
               className={styles.deleteBtn}
               onClick={() => setShowWarning(true)}

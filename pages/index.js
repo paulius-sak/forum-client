@@ -21,10 +21,10 @@ const Index = () => {
         </div>
         <section className={styles.ctaButtons}>
           <Link href="/signInLogin">
-            <Button title="Get Started" className={styles.ctaButton} />
+            <Button type="confirm" title="Get Started" className={styles.ctaButton} />
           </Link>
           <Link href="/about">
-            <Button title="Learn More" className={styles.ctaButton} />
+            <Button type="confirm" title="Learn More" className={styles.ctaButton} />
           </Link>
         </section>
         <section className={styles.features}>

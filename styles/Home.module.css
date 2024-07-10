@@ -1,17 +1,6 @@
 .wrapper {
   margin-top: 2rem;
-  /* background-image: url("../assets/wallpaper/wallpaper.jpg");
-  background-size: cover;
-  background-position: center;
-  box-shadow:
-    rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  width: 100%; */
   height: 100vh;
-  /* border-top-right-radius: 150px;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 150px;
-  border-bottom-right-radius: 50px; */
   color: #fff;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   display: flex;
@@ -38,18 +27,13 @@
 
 .ctaButtons .ctaButton {
   padding: 1rem 2rem;
-  background-color: var(--button-blue);
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
 }
 
-.ctaButton:hover {
-  background-color: #0db2f3;
-}
 
 .features {
   margin-top: 2rem;

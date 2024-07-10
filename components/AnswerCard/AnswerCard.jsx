@@ -4,10 +4,10 @@ import cookies from "js-cookie";
 import axios from "axios";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
-import LikeSvg from "../../assets/icons/like.svg"
-import LikedSvg from "../../assets/icons/liked.svg"
-import DislikeSvg from "../../assets/icons/dislike.svg"
-import DislikedSvg from "../../assets/icons/disliked.svg"
+import LikeSvg from "../../assets/icons/like.svg";
+import LikedSvg from "../../assets/icons/liked.svg";
+import DislikeSvg from "../../assets/icons/dislike.svg";
+import DislikedSvg from "../../assets/icons/disliked.svg";
 
 const AnswerCard = ({
   id,
@@ -109,13 +109,13 @@ const AnswerCard = ({
           <h5>Disliked: {dislikes}</h5>
           <h6>{date.split("T")[0]}</h6>
 
-          <Button onClick={handleLike}>
+          <Button type="neutral" onClick={handleLike}>
             <img
               src={userHasLiked ? LikedSvg.src : LikeSvg.src}
               alt={userHasLiked ? "Unlike" : "Like"}
             />
           </Button>
-          <Button onClick={handleDislike}>
+          <Button type="neutral" onClick={handleDislike}>
             <img
               src={userHasDisliked ? DislikedSvg.src : DislikeSvg.src}
               alt={userHasDisliked ? "Undislike" : "Dislike"}
@@ -124,6 +124,7 @@ const AnswerCard = ({
 
           {isCreator && (
             <Button
+              type="delete"
               onClick={() => setShowWarning(true)}
               title="Delete"
               className={styles.deleteBtn}

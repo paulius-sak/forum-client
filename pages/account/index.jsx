@@ -8,7 +8,7 @@ import Button from "@/components/Button/Button";
 import Modal from "@/components/Modal/Modal";
 import { useRouter } from "next/router";
 import UsersQuestions from "../../components/UsersQuestions/UsersQuestions";
-import AccountUpdate from "../../components/AccountUpdate/AccountUpdate"
+import AccountUpdate from "../../components/AccountUpdate/AccountUpdate";
 
 const Account = () => {
   const [user, setUser] = useState(null);
@@ -59,13 +59,14 @@ const Account = () => {
         authorization: cookies.get("jwt_token"),
       };
 
-      const response = await axios.get(`${process.env.SERVER_URL}/user/questions`,
-         {
+      const response = await axios.get(
+        `${process.env.SERVER_URL}/user/questions`,
+        {
           headers,
-        });
+        }
+      );
       const { questions } = response.data;
 
-      console.log("Fetched questions:", questions);
       setQuestions(Array.isArray(questions) ? questions : []);
       setLoading(false);
     } catch (err) {
@@ -79,7 +80,6 @@ const Account = () => {
       const headers = {
         authorization: cookies.get("jwt_token"),
       };
-      console.log(id)
 
       const response = await axios.delete(
         `${process.env.SERVER_URL}/questions/${id}`,
@@ -88,9 +88,30 @@ const Account = () => {
         }
       );
 
-      router.reload()
+      router.reload();
     } catch (err) {
       console.log("err", err);
+    }
+  };
+
+  const UpdateUser = async (updatedUser) => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
+      const response = await axios.put(
+        `${process.env.SERVER_URL}/user/${user.id}`,
+        updatedUser,
+        {
+          headers,
+        }
+      );
+
+      setUser(response.data.user);
+      router.reload();
+    } catch (err) {
+      console.log("Error updating user:", err);
     }
   };
 
@@ -110,16 +131,22 @@ const Account = () => {
         <h1 className={styles.title}>Profile</h1>
         {user ? (
           <>
-            <AccountUpdate user={user}/>
+            <AccountUpdate UpdateUser={UpdateUser} user={user} />
 
             {isLoading ? (
               <Spinner />
             ) : (
-              <UsersQuestions truncateTitle={truncateTitle} DeleteQuestion={DeleteQuestion}  questions={questions} user={user} />
+              <UsersQuestions
+                truncateTitle={truncateTitle}
+                DeleteQuestion={DeleteQuestion}
+                questions={questions}
+                user={user}
+              />
             )}
 
-            <section className={styles.deleteAccount}>
+            <section className={styles.deleteAccountWrapper}>
               <Button
+              type="neutral"
                 onClick={() => setShowWarning(true)}
                 className={styles.deleteAccBtn}
                 title="Delete account"

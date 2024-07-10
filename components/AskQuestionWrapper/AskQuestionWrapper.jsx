@@ -82,6 +82,7 @@ const AskQuestionWrapper = () => {
       </section>
 
       <Button
+      type="confirm"
         className={styles.postBtn}
         onClick={() => askQuestion()}
         title="Ask Question"

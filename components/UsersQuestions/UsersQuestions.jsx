@@ -21,7 +21,7 @@ const UsersQuestions = ({ questions, user, DeleteQuestion, truncateTitle }) => {
             
             <Link href={`/question/${question.id}`}><h3  className={styles.questionTitle}>{truncateTitle(question.question_title, 60)}</h3></Link>
             <h5 className={styles.date}>Created: {new Date(question.date).toLocaleDateString()}</h5>
-            <Button className={styles.deleteBtn} title="Delete" onClick={() => DeleteQuestion(question.id)}></Button>
+            <Button type="delete" className={styles.deleteBtn} title="Delete" onClick={() => DeleteQuestion(question.id)}></Button>
           </section>
         ))
       ) : (

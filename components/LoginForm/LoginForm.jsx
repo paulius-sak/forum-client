@@ -82,6 +82,7 @@ const LoginForm = () => {
         />
       </div>
       <Button
+        type="confirm"
         className={styles.loginBtn}
         onClick={() => onLogin()}
         title="Login"
