@@ -8,6 +8,9 @@ import QuestionsWrapper from "../../components/QuestionsWrapper/QuestionsWrapper
 import Link from "next/link";
 import QuestionsFilter from "../../components/QuestionsFilter/QuestionsFilter";
 import Spinner from "@/components/Spinner/Spinner";
+import ArrowLeft from "../../assets/icons/arrowLeft.svg"
+import ArrowRight from "../../assets/icons/arrowRight.svg"
+
 
 const Index = () => {
   const [questions, setQuestions] = useState([]);
@@ -133,14 +136,14 @@ const Index = () => {
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                Previous
+                <img src={ArrowLeft.src} alt="previous" />
               </button>
               <span>{` ${currentPage} / ${totalPages}`}</span>
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
-                Next
+                <img src={ArrowRight.src} alt="next" />
               </button>
             </div>
           </>

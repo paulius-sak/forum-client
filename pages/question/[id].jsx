@@ -13,7 +13,7 @@ const Question = () => {
   const [noAnswers, setNoAnswers] = useState(false);
   const [user, setUser] = useState(null);
   const [users, setUsers] = useState([]);
-  const [isLoading, setLoading] = useState(false)
+  const [isLoading, setLoading] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -21,13 +21,14 @@ const Question = () => {
   useEffect(() => {
     if (id) {
       const fetchQuestion = async () => {
-        setLoading(true)
+        setLoading(true);
+        console.log(id);
         try {
           const response = await axios.get(
             `${process.env.SERVER_URL}/questions/${id}`
           );
           setQuestion(response.data.question);
-          setLoading(false)
+          setLoading(false);
         } catch (err) {
           console.log("err", err);
         }
@@ -40,13 +41,13 @@ const Question = () => {
   useEffect(() => {
     if (id) {
       const fetchAnswers = async () => {
-        setLoading(true)
+        setLoading(true);
         try {
           const response = await axios.get(
             `${process.env.SERVER_URL}/questions/${id}/answers`
           );
           setAnswers(response.data.answers);
-          setLoading(false)
+          setLoading(false);
         } catch (err) {
           if (err.response && err.response.status === 404) {
             setNoAnswers(true);
@@ -132,15 +133,19 @@ const Question = () => {
           </div>
         </main>
       )}
-      {isLoading? (<Spinner/>) : (answers && (
-        <AnswerWrapper
-          answers={answers}
-          noAnswers={noAnswers}
-          user={user}
-          DeleteAnswer={DeleteAnswer}
-          users={users}
-        />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        answers && (
+          <AnswerWrapper
+            answers={answers}
+            noAnswers={noAnswers}
+            user={user}
+            DeleteAnswer={DeleteAnswer}
+            users={users}
+          />
+        )
+      )}
     </PageTemplate>
   );
 };

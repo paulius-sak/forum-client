@@ -13,6 +13,7 @@ const AccountUpdate = ({ user, UpdateUser }) => {
 
   return (
     <section className={styles.accountInfo}>
+      <h1 className={styles.title}>Account Information</h1>
       <div className={styles.inputWrapper}>
         <label htmlFor="name">Name:</label>
         <input
