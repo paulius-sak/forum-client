@@ -74,6 +74,10 @@
   animation-delay: 1.5s;
 }
 
+.statistics {
+  margin-top: 50px;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;

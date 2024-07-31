@@ -3,11 +3,9 @@ import React from "react";
 import PageTemplate from "../components/PageTemplate/PageTemplate";
 import Button from "../components/Button/Button";
 import Link from "next/link";
+import StatisticsWrapper from "../components/StatisticsWrapper/StatisticsWrapper";
 
 const Index = () => {
-
-
-  
 
   return (
     <PageTemplate>
@@ -38,6 +36,10 @@ const Index = () => {
             <p>Collaborate and learn through discussions.</p>
           </div>
         </section>
+        <section className={styles.statistics}>
+           <StatisticsWrapper/>
+        </section>
+     
       </main>
     </PageTemplate>
   );
